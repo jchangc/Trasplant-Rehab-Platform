@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <!-- http://codepen.io/petertoth/pen/BtGkp -->
+    <meta charset="UTF-8">
+    <title>PopOp - Sign in</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-32x32.png') }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-96x96.png') }}" sizes="96x96">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-16x16.png') }}" sizes="16x16">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="login.css">    
+  </head>
+
+
+  <body>
+
+    <div class="login">
+      <div class="heading">
+        <h2>Sign in</h2>
+        <form action="/login" method="POST">
+
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input type="text" name="email" id="email" class="form-control" placeholder="Email">
+          </div>
+
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+          </div>
+
+          <button type="submit" class="float">Login</button>
+        </form>
+        <form action="/signup" method="GET">
+          <button type="submit" class="float">Signup</button>
+        <form>
+      </div>
+    </div>
+    
+  </body>
+
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDxPfH_KSd0MWSjsj2sZ_d5ra8bNE-4Mbc",
+        authDomain: "transplant-rehabilitation.firebaseapp.com",
+        databaseURL: "https://transplant-rehabilitation.firebaseio.com",
+        storageBucket: "transplant-rehabilitation.appspot.com",
+        messagingSenderId: "593045005375"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="scripts/login.js"></script>
+</html>
