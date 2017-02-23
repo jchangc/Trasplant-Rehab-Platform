@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+
+	<meta charset="utf-8">
+	<title>Sign In</title>
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+		<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>	
+		<link rel="stylesheet" href="css/login.css">
+	</head>
+	<body>
+		<div class="container">
+			    <div class="row">
+			        <div class="col-md-offset-4 col-md-5">
+			            <div class="form-login">
+			            	<h3 align = "center">Transplant Rehabilitation Platform</h3>
+			            	</br>
+			            	<input type="text" id="txtEmail" class="form-control input-sm chat-input" placeholder="Email" />
+			            	</br>
+			            	<input type="password" id="txtPassword" class="form-control input-sm chat-input" placeholder="Password"/>
+			            	</br>
+			            	<div class="wrapper" align = 'center'>
+			            		<span class="group-btn">
+			            		</br>
+			            		<button id="bLogin" class="btn btn-action btn-lg"> Log In <span class="glyphicon glyphicon-log-in"></span></button>   
+			            		</span>
+			           		</div>
+			           		<br>	
+			           		<div align = 'center' class = "hidden" id = 'errorMessage'><p>Your email/password was incorrect. Please try again.</p></div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+	</body>
+	<script src="scripts/login.js"></script>	
+</html>
+	
