@@ -41,12 +41,10 @@
 
 	});
   	
-
   	// Auth listener
   	firebase.auth().onAuthStateChanged(user => {
   		if(user){
-  			console.log(user);
-  			bLogin.style.display = 'none'
+  			bLogin.style.display = 'none'	
   			window.location = 'splash.html';
   			reload();
   		} 
