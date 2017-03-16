@@ -7,16 +7,20 @@ body {
   padding-top: 50px;
 }
 
-.button {
+/*.button {
   padding-top: 30px;
   text-align: center;
 
-}
+}*/
 
 .text {
     resize: both;
     overflow: auto;
 
+}
+
+.survey {
+  text-align: center;
 }
 
 textarea {
