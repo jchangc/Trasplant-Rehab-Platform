@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Education</title>
+    <title>Add Patient</title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +22,9 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <script src="dist/js/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -54,57 +57,76 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li><a href="#">Exercise Schedule</a></li>
-            <li><a href="exercises.html">Exercises</a></li>
-            <li><a href="nutrition.html">Nutrition</a></li>
-            <li class="active"><a href="#">Education <span class="sr-only">(current)</span></a></li>
-            <li><a href="pain.html">Pain</a></li>
-            <li><a href="#">Medication</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="journal.html">Journal</a></li>
-            <li><a href="">Support</a></li>
-            <li><a href="">Share</a></li>
+          <ul class="nav nav-sidebar" id = 'adminSidebar'>
+            <li><a href="add_patient.html">Add Patient</a></li>
+            <li><a href="add_plan.html">Add Plan</a></li>
+            <li><a href="create_nutrition.html">Create Nutrition</a></li>
+            <li><a href="create_education.html">Create Education Materials</a></li>
+            <li><a href="create_exercise.html">Create Exercise</a></li>
+            <li><a href="create_survey.html">Create Pain Survey</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-          <h1 class="page-header">Education</h1>
+          <h1 class="page-header">Add a Patient</h1>
 
         <div class="footer">
           <div class="container">
-            <div class="col-sm-10 description">
-              <h3 class="header3">About Liver Transplantation</h3>
-              <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</span>
+            <div class = "col-4 text">
+              <textarea type="First Name" placeholder="First Name" cols="80" rows="1"></textarea>
+            </div>
+            <div class = "col-4 text">
+              <textarea type="Last Name" placeholder="Last Name" cols="80" rows="1"></textarea>
+            </div>
+            <div class = "col-4 text">
+              <textarea type="Email Address" placeholder="Email Address" cols="80" rows="1"></textarea>
             </div>
           </div>
           <hr>
 
-          <div class="container">
-            <div class="col-sm-3 title">
-              <h4>What should I expect?</h4>
-            </div>
-            <div class="col-sm-7 description">
-              <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</span>
-            </div>
-            </div>
-            <hr>
-
-          <div class="container">
-            <div class="col-sm-3 title">
-              <h4>Will I be in pain?</h4>
-            </div>
-            <div class="col-sm-7 description">
-              <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</span>
-            </div>
-            </div>
-            <hr>
+        <div class = "container">
+          <select class="col-sm-5 selectpicker">
+              <option>Type of Plan</option>
+              <option>Liver</option>
+              <option>Lung</option>
+              <option>Kidney</option>
+            </select>
           
+
+          <div class = "col-sm-3 button">
+          <button id = "button" type="button" class="btn btn-primary"> Send Link </button>
+          </div>
         </div>
+
+        </div>
+      </div>
       </div>
     </div>
   </div>
+
+  <!-- <div class="col-sm-5 dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type of Plan
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Liver</a></li>
+              <li><a href="#">Lung</a></li>
+              <li><a href="#">Kidney</a></li>
+            </ul>
+          </div> -->
+
+          
+<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
+    authDomain: "transplant-rehab.firebaseapp.com",
+    databaseURL: "https://transplant-rehab.firebaseio.com",
+    storageBucket: "transplant-rehab.appspot.com",
+    messagingSenderId: "592884792214"
+  };
+  firebase.initializeApp(config);
+</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -116,5 +138,6 @@
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="scripts/add_patient.js"></script>
   </body>
 </html>
