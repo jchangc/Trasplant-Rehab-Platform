@@ -74,7 +74,7 @@
           <h2 class="sub-header">How Are You Feeling Today? </h2>
 
           <div class = "text">
-        <textarea type="myTextBox" placeholder = "mytext" cols="80" rows="15"> </textarea>
+        <textarea type="myTextBox" id="text" placeholder = "mytext" cols="80" rows="15"> </textarea>
         </div>
 
         <div class = "button">
@@ -94,17 +94,35 @@
 	<textarea name="myTextBox" cols="50" rows="15">
 
 	</textarea> -->
+    <!--FIREBASE INITIALIZATION -->
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
+        authDomain: "transplant-rehab.firebaseapp.com",
+        databaseURL: "https://transplant-rehab.firebaseio.com",
+        storageBucket: "transplant-rehab.appspot.com",
+        messagingSenderId: "592884792214"
+      };
+      firebase.initializeApp(config);
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <!--
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <!--
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  -->
     <script src="scripts/journal.js"></script>
 
 </body>
