@@ -152,13 +152,11 @@ function saveText() {
 			newJournal.set({
 				content: String(text1)
 			});
+			displayPastEntries();
+			document.getElementById('text').value = "";
 
 
-	// newJournal.set({
-	// 	"content": text
-	// });
-
-			console.log("clicked");
+			//console.log("clicked");
 
 		 } else {
 			console.log("No user logged in rn")
