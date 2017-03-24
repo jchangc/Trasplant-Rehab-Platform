@@ -6,9 +6,12 @@ function displayTitle() {
 			var pageTitle = document.getElementById("pageTitle");
 			pageTitle.innerHTML = " ";
 			var userPlanName;
-			var ref = firebase.database().ref("/User ID/" + userInfo.uid);
+			var currUser = firebase.auth().currentUser.uid;
+			var ref = firebase.database().ref("User ID");
+			var userRef = ref.child(currUser);
+
 			//Getting the user's plan name
-			ref.on("value", function(snapshot) {
+			userRef.on("value", function(snapshot) {
 				userPlanName = snapshot.val().Plan;
 			}, function (error) {
 			   console.log("Error: " + error.code);
