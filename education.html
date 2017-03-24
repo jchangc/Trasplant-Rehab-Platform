@@ -75,46 +75,47 @@
         <div class="footer">
           <div class="container">
             <div class="col-sm-10 description">
-              <h3 class="header3">About Liver Transplantation</h3>
-              <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</span>
+              <h3 class="pageTitle" id ='pageTitle'></h3>
             </div>
           </div>
           <hr>
 
-          <div class="container">
+          <!--<div class="container">
             <div class="col-sm-3 title">
-              <h4>What should I expect?</h4>
+              <h4 class = "sectionTitle" id = 'sectionTitle'> </h4>
             </div>
             <div class="col-sm-7 description">
               <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</span>
             </div>
-            </div>
-            <hr>
+            </div> -->
 
-          <div class="container">
-            <div class="col-sm-3 title">
-              <h4>Will I be in pain?</h4>
-            </div>
-            <div class="col-sm-7 description">
-              <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</span>
-            </div>
-            </div>
-            <hr>
-          
         </div>
       </div>
     </div>
   </div>
+
+      <!--FIREBASE INITIALIZATION -->
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
+        authDomain: "transplant-rehab.firebaseapp.com",
+        databaseURL: "https://transplant-rehab.firebaseio.com",
+        storageBucket: "transplant-rehab.appspot.com",
+        messagingSenderId: "592884792214"
+      };
+      firebase.initializeApp(config);
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="scripts/education.js"></script>
+
+
   </body>
 </html>

@@ -12,6 +12,7 @@ function saveSection() {
 	document.getElementById('description').value = "";
 }
 
+
 function savePlan() {
 	var database = firebase.database();
 	 firebase.auth().onAuthStateChanged(function(user) {
