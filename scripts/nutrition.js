@@ -17,18 +17,18 @@ function displayTitle() {
 			   console.log("Error: " + error.code);
 			});
 
-			//Getting the Education's Title from Plans
+			//Getting the Nutrition's Title from Plans
 			var planRef = firebase.database().ref("Plans");
-			var EducationName;
+			var NutritionName;
 			//loop through each journal entry stored
 			planRef.on("value", function(snapshot) {
 				console.log(snapshot.val());
 				snapshot.forEach(function(child) {
 					if (child.val().PlanName == userPlanName) {
-						//retrieve the corresponding Education Plan Name
-						EducationName = child.val().EducationPlan;
-						//console.log(child.val().EducationPlan);
-						pageTitle.innerHTML = child.val().EducationPlan;
+						//retrieve the corresponding Nutrition Plan Name
+						NutritionName = child.val().NutritionPlan;
+						//console.log(child.val().NutritionPlan);
+						pageTitle.innerHTML = child.val().NutritionPlan;
 
 					}
 				});
@@ -37,13 +37,13 @@ function displayTitle() {
 				console.log("Error:" + error.code);
 			});
 		//FOR DISPLAYING CONTENTS
-			//find the corresponding Education node 
-			var edRef = firebase.database().ref("Education");
-			edRef.on("value", function(snapshot) {
+			//find the corresponding Nutrition node 
+			var nuRef = firebase.database().ref("Nutrition");
+			nuRef.on("value", function(snapshot) {
 				snapshot.forEach(function(child) {
-					if (child.val().Page == EducationName) {
+					if (child.val().PlanName == NutritionName) {
 						//LOOP THROUGH ALL CONTENTS AND DISPLAY EACH ONE ACCORDINGLY	
-						var childRef = edRef.child(child.key);
+						var childRef = nuRef.child(child.key);
 						childRef.on("value", function(snapshot) {
 							snapshot.forEach(function(child) {
 								//ADD DIVS FOR EACH CONTENT
