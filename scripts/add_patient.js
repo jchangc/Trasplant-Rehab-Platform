@@ -1,7 +1,7 @@
-function savePlan() {
+function savePatient() {
 	var database = firebase.database();
-	 firebase.auth().onAuthStateChanged(function(user) {
-	 	if (user) {
+	 //firebase.auth().onAuthStateChanged(function(user) {
+	 	//if (user) {
 
 	 		var firstname = document.getElementById('firstname').value;
 			var lastname = document.getElementById('lastname').value; 
@@ -9,13 +9,14 @@ function savePlan() {
 			var email = document.getElementById('email').value;
 			var plan = document.getElementById('selectplan').value;
 
-			var users = firebase.database().ref("User ID");
-			var newUser = users.push();
+			var pending = firebase.database().ref("Pending");
+
+			var newUser = pending.push();
 			newUser.set({
 				Name: String(name),
 				Email: String(email),
 				Plan: String(plan),
-				IsAdmin: "No",
+				isAdmin: "No",
 				Journal: ""
 			});
 			var journalRef = newUser.child("Journal");
@@ -25,12 +26,12 @@ function savePlan() {
 
 			console.log("clicked");
 
-		 } else {
-		 	console.log("No user logged in rn")
-			window.location = 'login.html';
-			reload();
-		 }
-	});
+	// 	 } else {
+	// 	 	console.log("No user logged in rn")
+	// 		window.location = 'login.html';
+	// 		reload();
+	// 	 }
+	// });
 }
 
 // read from the database what nutrition/exercise/education pages we 
@@ -51,7 +52,7 @@ plans.on("value", function(snapshot) {
 
 var savebutton = document.getElementById("savebutton");
 
-savebutton.onclick = function(){savePlan()};
+savebutton.onclick = function(){savePatient()};
 
 
 
