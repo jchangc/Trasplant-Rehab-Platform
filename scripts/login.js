@@ -44,6 +44,38 @@
   	// Auth listener
   	firebase.auth().onAuthStateChanged(user => {
   		if(user){
+  			// match user to pending user
+  			var txtEmail = document.getElementById('txtEmail').value;
+  			var pending = firebase.database().ref("Pending");
+			pending.on("value", function(snapshot) {
+				snapshot.forEach(function(child) {
+					if (child.val().Email === String(txtEmail)) {
+						var currUser = firebase.auth().currentUser.uid;
+						var ref = firebase.database().ref("User ID");
+						var currUserRef = ref.child(currUser);
+
+						var name = child.val().Name;
+						var email = child.val().Email;
+						var plan = child.val().Plan;
+
+						currUserRef.set({
+							Name: String(name),
+							Email: String(email),
+							Plan: String(plan),
+							isAdmin: "No",
+							Journal: ""
+						});
+						var journalRef = currUserRef.child("Journal");
+			            journalRef.set({
+			        		Entry1: " "
+			            });
+					}
+				});
+			}, function (error) {
+				console.log("Error:" + error.code);
+			});
+
+
   			bLogin.style.display = 'none'	
   			window.location = 'splash.html';
   			reload();
