@@ -17,7 +17,7 @@
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/journal.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -68,18 +68,23 @@
             <li><a href="">Share</a></li>
           </ul>
         </div>
+
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">My Journal</h1>
-
           <h2 class="sub-header">How Are You Feeling Today? </h2>
 
           <div class = "text">
-        <textarea type="myTextBox" id="text" placeholder = "mytext" cols="80" rows="15"> </textarea>
-        </div>
+          <textarea type="myTextBox" id="text" placeholder = "Journal submitted!" cols="80" rows="15"> </textarea>
+          </div>
 
-        <div class = "button">
-        <button id = "button" type="button" class="btn btn-primary"> Save </button>
-        </div>
+          <div class = "button">
+          <button id = "button" type="button" class="btn btn-primary"> Save </button>
+          </div>
+
+          <div class = "displayJournal">
+              <h4 class = "journalContent" id = 'displayContent'></h4>
+          </div>
         </div>
       </div>
     </div>
