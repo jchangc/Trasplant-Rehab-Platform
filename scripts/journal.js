@@ -7,6 +7,7 @@ function displayPastEntries() {
 
 	firebase.auth().onAuthStateChanged(function(user) {
 	 	if (user) {
+
  			var pastEntries = document.getElementById("displayContent");
 			pastEntries.innerHTML = " ";
 
@@ -152,6 +153,8 @@ function saveText() {
 			newJournal.set({
 				content: String(text1)
 			});
+			var pastEntries = document.getElementById("displayContent");
+			pastEntries.innerHTML = " ";
 			displayPastEntries();
 			document.getElementById('text').value = "";
 
