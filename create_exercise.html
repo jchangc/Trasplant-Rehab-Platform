@@ -66,20 +66,20 @@
         <div class="footer">
           <div class="container">
             <div class = "text">
-              <textarea type="Exercise Name" placeholder="Exercise Plan Name" cols="80" rows="1"></textarea>
+              <textarea type="Exercise Name" id="planname" placeholder="Exercise Plan Name" cols="80" rows="1"></textarea>
             </div>
           </div>
           <hr>
 
           <div class="container">
             <div class = "text">
-              <textarea type="Exercise Name" placeholder="Exercise Name" cols="80" rows="1"></textarea>
+              <textarea type="Exercise Name" id="exercisename" placeholder="Exercise Name" cols="80" rows="1"></textarea>
             </div>
           </div>
 
           <div class="container">
             <div class = "text">
-              <textarea type="Description" placeholder="Description" cols="80" rows="15"></textarea>
+              <textarea type="Description" id="description" placeholder="Description" cols="80" rows="15"></textarea>
             </div>
           </div>
           
@@ -92,20 +92,26 @@
 
         <div class="container">
             <div class = "text">
-              <textarea type="Embed Video Link" placeholder="Embed Video Link" cols="80" rows="1"></textarea>
+              <textarea type="Embed Image Link" id="imagelink" placeholder="Embed Image Link" cols="80" rows="1"></textarea>
+            </div>
+          </div>
+
+        <div class="container">
+            <div class = "text">
+              <textarea type="Embed Video Link" id="videolink" placeholder="Embed Video Link" cols="80" rows="1"></textarea>
             </div>
           </div>
         <hr>
 
         <div class="form-group">
           <div class = "col-sm-3 button">
-          <button id = "button" type="button" class="btn btn-primary"> Add Another Exercise </button>
+          <button type="button" id="addbutton" class="btn btn-primary"> Add Another Exercise </button>
           </div>
         </div>
 
         <div class="form-group">
           <div class = "col-sm-3 button">
-          <button id = "button" type="button" class="btn btn-primary"> Submit </button>
+          <button type="button" id="submitbutton" class="btn btn-primary"> Submit </button>
           </div>
         </div>
 
@@ -138,10 +144,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="scripts/create_exercise.js"></script>
   </body>
 </html>

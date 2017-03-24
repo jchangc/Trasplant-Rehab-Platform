@@ -66,20 +66,20 @@
         <div class="footer">
           <div class="container">
             <div class = "text">
-              <textarea type="Nutrition Plan Name" placeholder="Nutrition Plan Name" cols="80" rows="1"></textarea>
+              <textarea type="Nutrition Plan Name" id="planname" placeholder="Nutrition Plan Name" cols="80" rows="1"></textarea>
             </div>
           </div>
           <hr>
 
           <div class="container">
             <div class = "text">
-              <textarea type="Food Name" placeholder="Food Name" cols="80" rows="1"></textarea>
+              <textarea type="Food Name" id="foodname" placeholder="Food Name" cols="80" rows="1"></textarea>
             </div>
           </div>
 
           <div class="container">
             <div class = "text">
-              <textarea type="Description" placeholder="Description" cols="80" rows="15"></textarea>
+              <textarea type="Description" id="description" placeholder="Description" cols="80" rows="15"></textarea>
             </div>
           </div>
           
@@ -89,17 +89,23 @@
             Upload an Image <input type="file">
           </span>
         </div>
+
+        <div class="container">
+            <div class = "text">
+              <textarea type="Embed Image Link" id="imagelink" placeholder="Embed Image Link" cols="80" rows="1"></textarea>
+            </div>
+          </div>
         <hr>
 
         <div class="form-group">
           <div class = "col-sm-3 button">
-          <button id = "button" type="button" class="btn btn-primary"> Add Another Food </button>
+          <button id = "addbutton" type="button" class="btn btn-primary"> Add Another Food </button>
           </div>
         </div>
 
         <div class="form-group">
           <div class = "col-sm-3 button">
-          <button id = "button" type="button" class="btn btn-primary"> Submit </button>
+          <button id = "submitbutton" type="button" class="btn btn-primary"> Submit </button>
           </div>
         </div>
 
@@ -132,10 +138,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="scripts/create_nutrition.js"></script>
   </body>
 </html>
