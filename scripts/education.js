@@ -47,8 +47,8 @@ function displayTitle() {
 						childRef.on("value", function(snapshot) {
 							snapshot.forEach(function(child) {
 								//ADD DIVS FOR EACH CONTENT
-								// var Title = child.val().Title;
-								// var Description = child.val().Description;
+								var Title = child.val().Title;
+								var Description = child.val().Description;
 								// var div1 = document.createElement('div');
 								// document.body.appendChild(div1);
 								// div1.id = 'sectionHeader';
