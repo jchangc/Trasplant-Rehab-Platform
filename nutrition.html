@@ -70,22 +70,22 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-          <h1 class="page-header">Nutrition</h1>
+          <h1 class="page-header" id = 'pageTitle'></h1>
 
         <div class="footer">
           <div class="container">
             <div class="col-sm-3 nameandimage">
-              <h4>Diet 1</h4>
+              <h4 id = 'sectionTitle'> </h4>
               <img src="http://i.imgur.com/4YZSX04.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
             </div>
             <div class="col-sm-7 description">
               <h4>Description</h4>
-              <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</span>
+              <span class="text-muted" id = 'sectionContent'></span>
             </div>
           </div>
           <hr>
 
-          <div class="container">
+   <!--       <div class="container">
             <div class="col-sm-3 nameandimage">
               <h4>Diet 2</h4>
               <img src="http://i.imgur.com/4YZSX04.jpg" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -131,12 +131,27 @@
               <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.</span>
             </div>
           </div>
-          <hr>
+          <hr> -->
 
         </div>
       </div>
     </div>
   </div>
+
+        <!--FIREBASE INITIALIZATION -->
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
+        authDomain: "transplant-rehab.firebaseapp.com",
+        databaseURL: "https://transplant-rehab.firebaseio.com",
+        storageBucket: "transplant-rehab.appspot.com",
+        messagingSenderId: "592884792214"
+      };
+      firebase.initializeApp(config);
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -148,5 +163,7 @@
     <script src="../../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="scripts/nutrition.js"></script>
+
   </body>
 </html>
