@@ -57,22 +57,23 @@ function displayTitle() {
 								// document.body.appendChild(div2);
 								// div2.id = 'description';
 								// div2.innerHTML = Description;
-								var div1 = document.createElement('div');
-								document.getElementById("sectionTitle").appendChild(div1);
-								div1.id = 'sectionHeader';
-								div1.innerHTML = Title;
-								var div2 = document.createElement('div');
-								document.getElementById("sectionContent").appendChild(div2);
-								div2.id = 'description';
-								div2.innerHTML = Description;
-								div2.style.height = '150px';
-								var emptyDiv = document.createElement('div');
-								emptyDiv.style.height = '130px';
-								document.getElementById("sectionTitle").appendChild(emptyDiv);
-								var emptyDiv2 = document.createElement('div');
-								emptyDiv2.style.height = '10px';
-								document.getElementById("sectionContent").appendChild(emptyDiv2);
-
+								if (Title != null && Description != null) {
+									var div1 = document.createElement('div');
+									document.getElementById("sectionTitle").appendChild(div1);
+									div1.id = 'sectionHeader';
+									div1.innerHTML = Title;
+									var div2 = document.createElement('div');
+									document.getElementById("sectionContent").appendChild(div2);
+									div2.id = 'description';
+									div2.innerHTML = Description;
+									div2.style.height = '150px';
+									var emptyDiv = document.createElement('div');
+									emptyDiv.style.height = '130px';
+									document.getElementById("sectionTitle").appendChild(emptyDiv);
+									var emptyDiv2 = document.createElement('div');
+									emptyDiv2.style.height = '10px';
+									document.getElementById("sectionContent").appendChild(emptyDiv2);
+								}
 							});
 						}, function(error) {
 							console.log("Error:" + error.code);
