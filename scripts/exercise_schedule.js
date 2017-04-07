@@ -84,11 +84,13 @@ function populate() {
       var exRef = firebase.database().ref("Plans");
       exRef.on("value", function(snapshot) {
           snapshot.forEach(function(child) {
-            // console.log(child.child("PlanName").val())
+            console.log(userPlanName)
             if (child.child("PlanName").val() == userPlanName) {
               var schedule = child.child("Schedule")
               var p;
 
+              console.log(schedule)
+              console.log(schedule.val())
               for (p = 0; p < 7; p++){
                 var day = schedule.child(weekday[p])
                 day.forEach(function(childSnapshot){
@@ -101,6 +103,7 @@ function populate() {
                   element.innerHTML = key
                   list.append(element)
                 })
+
               }
            }
         })
