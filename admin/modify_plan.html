@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add Plan</title>
+    <title>Modify/Delete Plan</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -63,7 +63,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-        <h1 class="page-header">Add a Plan</h1>
+        <h1 class="page-header">Modify/Delete a Plan</h1>
 
         <div class="footer">
           <div class="form-group">
@@ -102,17 +102,19 @@
             </select>
           <hr>
 
-          <!-- <div class="form-group">
+          <div class="form-group">
             <label for="selectpainsurvey">Pain</label>
             <select class="form-control" id="selectpainsurvey">
               <option selected disabled hidden>Select Pain Survey</option>
             </select>
-          <hr> -->
+          <hr>
 
         <div class="form-group">
           <div class = "button">
-          <button id = "savebutton" type="button" class="btn btn-primary"> Create Plan </button>
-          <a class = "hidden" id = 'confirm'> Your plan has been added/created successfully. </a>
+          <button id = "modifybutton" type="button" class="btn btn-primary"> Modify Plan </button>
+          <button id = "deletebutton" type="button" class="btn btn-primary"> Delete Plan </button>
+          <a class = "hidden" id = 'delete_confirm'> Your plan has been deleted successfully. </a>
+          <a class = "hidden" id = 'modify_confirm'> Your plan has been modified successfully. </a>
           </div>
         </div>
 
@@ -135,7 +137,7 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script src="../scripts/add_plan.js"></script>
+    <script src="../scripts/modify_plan.js"></script>
     <script src="../dist/js/jquery.min.js"></script>
     <script src="../dist/js/bootstrap.min.js"></script>
 

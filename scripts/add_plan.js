@@ -16,14 +16,36 @@ store[4] = {};
 store[5] = {};
 store[6] = {};
 
-
+var planStore;
+var success = true;
+var confirmMsg = document.getElementById('confirm');
 
 function savePlan() {
 	var database = firebase.database();
-	 firebase.auth().onAuthStateChanged(function(user) {
-	 	if (user) {
+	var name = document.getElementById('planname').value;
+	var planExists = false;
+	
+	// Check that plan with same name does NOT already exist
+	planStore.forEach(function(entry){
+		entryLower = entry.toLowerCase();
+		nameLower = name.toLowerCase();
 
-	 		var name = document.getElementById('planname').value;
+		if (entryLower == nameLower) {
+		    alert("Plan with name already exists. Please enter an alternative name.\n\nNOTE: plan names are NOT case sensitive.")
+		    planExists = true;
+	    }
+	});
+
+	// Go on if plan name does not exist
+
+	firebase.auth().onAuthStateChanged(function(user) {
+		if (planExists){
+			return;
+		} else if (user && !planExists) {
+
+			console.log("Setting plan.")
+
+	 		// Field data values
 			var exercise = document.getElementById('selectexerciseplan').value; 
 			var nutrition = document.getElementById('selectnutritionplan').value;
 			var education = document.getElementById('selecteducationplan').value;
@@ -45,16 +67,18 @@ function savePlan() {
 				} 
 			}
 
-			// Zeroing out the empty stuff
+			// Zeroing out the empty entries
 			for (j = 0; j < 7; j++){
 				if (jQuery.isEmptyObject(store[j])){
 					store[j] = ""
 				}
 			} 
 
+
+
 			var plan = firebase.database().ref("Plans");
 			var newPlan = plan.push();
-			newPlan.set({
+			var promise = newPlan.set({
 				PlanName: String(name),
 				ExercisePlan: String(exercise),
 				Schedule: {
@@ -70,7 +94,22 @@ function savePlan() {
 				EducationPlan: String(education)
 			});
 
-			console.log("clicked");
+			console.log("Set Request Sent")
+
+			promise.catch(function(e){
+				var errorCode = e.code;
+				var errorMessage = e.message;
+				console.log(e.message)
+				success = false;
+			})
+
+			setTimeout(function(){
+				console.log("assessing whether to remove hidden")
+				if(success == true){
+					console.log("trying to remove hidden")
+					confirmMsg.classList.remove('hidden')
+				}
+			}, 1500)
 
 		 } else {
 		 	console.log("No user logged in rn")
@@ -121,6 +160,19 @@ function updateExercises(value) {
    });
 }
 
+function extractPlanNames(){	
+	var plans = firebase.database().ref("Plans");
+	plans.on("value", function(snapshot) {
+		var numChildren = snapshot.numChildren();
+		planStore = new Array(numChildren);
+	    snapshot.forEach(function(child) {
+	    	planStore[numChildren-1] = child.child("PlanName").val();
+	    	numChildren--;
+	    })
+	})
+}
+
+
 var exercisePicker = document.getElementById('selectexerciseplan');
 var exercises = firebase.database().ref("Exercise Plans");
 exercises.on("value", function(snapshot) {
@@ -156,6 +208,8 @@ educations.on("value", function(snapshot) {
 }, function (error) {
 				console.log("Error:" + error.code);
 });
+
+extractPlanNames();
 
 var savebutton = document.getElementById("savebutton");
 

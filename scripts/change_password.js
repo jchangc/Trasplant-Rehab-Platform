@@ -10,15 +10,39 @@ var userEmail;
 var errorThrown = false;
 var passwordChanged = false;
 
-firebase.auth().onAuthStateChanged(function(user) {
-	if (user) {
+	firebase.auth().onAuthStateChanged(function(user) {
+		if (user) {
 			userInfo = firebase.auth().currentUser;
 			userEmail = firebase.auth().currentUser.email;
-	} else {
+		} else {
 			console.log("No user signed in.")
-	}
+		}
+		    	// Obtaining isAdmin information
+		var ref = firebase.database().ref("/User ID/" + userInfo.uid);
+		ref.on("value", function(snapshot) {
+		    isAdmin = snapshot.val().isAdmin
+	    	var sidebarUser1 = document.getElementById('normalUserSidebar1');
+	    	var sidebarUser2 = document.getElementById('normalUserSidebar2');
+	    	var sidebarAdmin = document.getElementById('adminSidebar');
+	    	var pass = document.getElementById('passwordSidebar')
+
+		// Displaying the welcome message
+
+			if(isAdmin == "Yes") {
+				console.log(sidebarAdmin)
+				sidebarAdmin.removeAttribute("style")
+			} else {
+				sidebarUser1.removeAttribute("style")
+				sidebarUser2.removeAttribute("style")
+			}
+
+				pass.removeAttribute("style")
+
+			}, function (error) {
+				console.log("Error: " + error.code);
+		});
 });	
-	
+
 savebutton.onclick = function(){	
 
 	// Make sure that old password checks out
