@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Add Patient</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+    <link href="../css/dashboard.css" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script>
+    var config = {
+        apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
+        authDomain: "transplant-rehab.firebaseapp.com",
+        databaseURL: "https://transplant-rehab.firebaseio.com",
+        storageBucket: "transplant-rehab.appspot.com",
+        messagingSenderId: "592884792214"
+      };
+      var currUID;
+      firebase.initializeApp(config);
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          currUID = firebase.auth().currentUser.uid;
+          var ref = firebase.database().ref("/User ID/" + currUID);
+      ref.on("value", function(snapshot) {
+        var isAdmin = snapshot.val().isAdmin
+
+          if(isAdmin == "No"){
+            window.location = '../splash.html';
+            window.reload();
+          }
+          }, function (error) {
+            console.log("Error: " + error.code);
+          });
+
+        } else {
+          // Do nothing
+        }
+  });
+  </script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../splash.html">Transplant Rehabilitation Options</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id = 'logoutButton'>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar" id = 'adminSidebar'>
+            <li><a href="add_patient.html">Add User</a></li>
+            <li><a href="add_plan.html">Add Plan</a></li>
+            <li><a href="create_nutrition.html">Create Nutrition</a></li>
+            <li><a href="create_education.html">Create Education Materials</a></li>
+            <li><a href="create_exercise.html">Create Exercise</a></li>
+            <li><a href="create_survey.html">Create Pain Survey</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+          <h1 class="page-header">Add a User</h1>
+
+        <div class="footer">
+          <div class="container">
+            <div class = "col-4 text">
+              <textarea type="First Name" id="firstname" placeholder="First Name" cols="80" rows="1"></textarea>
+            </div>
+            <div class = "col-4 text">
+              <textarea type="Last Name" id="lastname" placeholder="Last Name" cols="80" rows="1"></textarea>
+            </div>
+            <div class = "col-4 text">
+              <textarea type="Email Address" id="email" placeholder="Email Address" cols="80" rows="1"></textarea>
+            </div>
+          </div>
+          
+        <hr>
+
+        <div class = "container">
+              <form>
+                <input type = "password" id ="password" placeholder="Enter password" cols="80" rows="1"><br>
+                <input type = "password" id ="password_check" placeholder="Enter password again" cols="80" rows="1"><br>
+              </form> 
+        </div>
+
+        <hr>   
+
+        <div class = "container">
+          <select class="col-sm-5 selectpicker" id="selectplan">
+              <option value="" selected disabled hidden>Select plan type</option>
+          </select>  
+
+          <div class = "col-sm-3 button">
+              <button id = "savebutton" type="button" class="btn btn-primary"> Add User </button>
+          </div>
+        </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+ 
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../scripts/add_patient.js"></script>
+  </body>
+</html>

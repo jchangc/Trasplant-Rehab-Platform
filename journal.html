@@ -6,9 +6,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>journal</title>
+    <title id ="title">Journal</title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +16,7 @@
     <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/journal.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -28,9 +27,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-		 <title> journal </title>
+		 <title> Journal </title>
 	</head>
-	<body>
+	<body id = "body">
 
         <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -45,7 +44,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Logout</a></li>
+            <li><a href="#" id = "logoutButton">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -55,12 +54,12 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li><a href="#">Exercise Schedule </a></li>
+            <li><a href="exercise_schedule.html">Exercise Schedule </a></li>
             <li><a href="exercises.html">Exercises</a></li>
             <li><a href="nutrition.html">Nutrition</a></li>
             <li><a href="education.html">Education</a></li>
             <li><a href="pain.html">Pain</a></li>
-            <li><a href="#">Medications</a></li>
+            <li><a href="medications.html">Medications</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li class="active"><a href="journal.html">Journal <span class="sr-only">(current)</span></a></li>
@@ -71,27 +70,29 @@
 
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">My Journal</h1>
-          <h2 class="sub-header">How Are You Feeling Today? </h2>
+          <h1 class="page-header" id="pageheader">My Journal</h1>
+          <h3>How Are You Feeling Today? </h3>
 
           <div class = "text">
-          <textarea type="myTextBox" id="text" placeholder = "Journal submitted!" cols="80" rows="15"> </textarea>
+            <textarea type="myTextBox" id="text" placeholder = "Journal submitted!" cols="80" rows="15"> </textarea>
           </div>
 
           <div class = "button">
-          <button id = "button" type="button" class="btn btn-primary"> Save </button>
+            <button id = "button" type="button" class="btn btn-primary"> Save </button>
+            <button id = "export" type="button" class="btn btn-primary"> Export to PDF </button>
           </div>
 
-          <div class = "displayJournal">
-              <h4 class = "journalContent" id = 'displayContent'></h4>
+          <div>
+            <p></p>
+          </div>
+
+          <div id ='displayContentTop'>
+              <h4 id ='displayContent'>'lmao</h4>
           </div>
         </div>
       </div>
     </div>
 
-
-
-ß
 <!-- 	<h1> My Journal </h1>
 
 	<p> How Are You Feeling Today? </p>
@@ -118,7 +119,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <!--
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
@@ -128,7 +128,13 @@
     <!--
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   -->
+    <script src="scripts/jspdf.js"></script>
+    <script src="scripts/from_html.js"></script>
+    <script src="scripts/split_text_to_size.js"></script>
+    <script src="scripts/standard_fonts_metrics.js"></script>
+    <script src="scripts/FileSaver.js"></script>
     <script src="scripts/journal.js"></script>
+    <script src="scripts/logout.js"></script>
 
 </body>
 

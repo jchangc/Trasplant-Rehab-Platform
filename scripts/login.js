@@ -8,7 +8,6 @@
     messagingSenderId: "592884792214"
   	};
   	firebase.initializeApp(config);
-  	console.log(firebase.app().name);
 
   	const txtEmail = document.getElementById('txtEmail');
   	const txtPassword = document.getElementById('txtPassword');
@@ -24,21 +23,26 @@
 		// Sign in
 		const promise = auth.signInWithEmailAndPassword(email, pass);
 		promise.catch(function(e){
+			console.log("FAILED.")
 			var errorCode = e.code;
 			var errorMessage = e.message;
 			var errorDisplay = document.getElementById('errorMessage');
+			var noUserErrorDisplay = document.getElementById('noUserMessage');
+
+			console.log(e)
 			if(errorCode === 'auth/wrong-password'){
-				// alert('Incorrect Password. Try again.');
-				document.getElementById('errorMessage').classList.remove('hidden');
+				noUserErrorDisplay.classList.add('hidden');
+				errorDisplay.classList.remove('hidden');
 			}
 			if(errorCode === 'auth/invalid-email'){
-				// alert('Invalid Email. Try again.');
-				document.getElementById('errorMessage').classList.remove('hidden');
+				noUserErrorDisplay.classList.add('hidden');
+				errorDisplay.classList.remove('hidden');
 			}
-			console.log(e);
+		    if(errorCode === 'auth/user-not-found'){
+				errorDisplay.classList.add('hidden');
+				noUserErrorDisplay.classList.remove('hidden');
+			}
 		});
-
-
 	});
   	
   	// Auth listener

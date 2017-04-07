@@ -9,7 +9,7 @@ function displayPastEntries() {
 	 	if (user) {
 
  			var pastEntries = document.getElementById("displayContent");
-			pastEntries.innerHTML = " ";
+			pastEntries.innerHTML = "";
 
 			var currUser = firebase.auth().currentUser.uid;
 			var ref = firebase.database().ref("User ID");
@@ -19,12 +19,11 @@ function displayPastEntries() {
 
 			//loop through each journal entry stored
 			journalRef.on("value", function(snapshot) {
-				console.log(snapshot.val());
 				var journalNum = 1;
 				snapshot.forEach(function(child) {
 					if (child.val().content != null) {
-						pastEntries.innerHTML += "Journal" + " " + journalNum + ": "
-											+ child.val().content + "<br>" + "<br>";
+						pastEntries.innerHTML += "<p> Journal" + " " + journalNum + " - " + child.val().date + " : "
+											+ child.val().content + "</p>";
 				    	journalNum++;
 					}
 				});
@@ -144,6 +143,12 @@ function saveText() {
 
 			var text1 = document.getElementById('text').value; 
 
+		    var date = new Date();
+			var day = date.getDate();
+			var month = date.getMonth()+1
+			var year = date.getFullYear();
+			var dateStr = month + "/" + day + "/" + year
+
 			var currUser = firebase.auth().currentUser.uid;
 			var ref = firebase.database().ref("User ID");
 			var currUserRef = ref.child(currUser);
@@ -151,15 +156,14 @@ function saveText() {
 			var journalRef = currUserRef.child("Journal");
 			var newJournal = journalRef.push();
 			newJournal.set({
-				content: String(text1)
+				content: String(text1),
+				date: String(dateStr)
 			});
+
 			var pastEntries = document.getElementById("displayContent");
 			pastEntries.innerHTML = " ";
 			displayPastEntries();
 			document.getElementById('text').value = "";
-
-
-			//console.log("clicked");
 
 		 } else {
 			console.log("No user logged in rn")
@@ -171,8 +175,48 @@ function saveText() {
 
 
 }
+
 displayPastEntries();
 
 var button = document.getElementById("button");
+var exportButton = document.getElementById("export");
 
-button.onclick = function(){saveText()};
+var doc = new jsPDF();
+var specialElementHandlers = {
+	'#class': function (element, renderer) {
+            return true;
+    	}
+};
+
+
+button.onclick = function(){
+	saveText();
+};
+
+exportButton.onclick = function(){
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1
+	var yyyy = today.getFullYear();
+	if(dd<10) {
+   		dd='0'+dd
+	} 
+
+	if(mm<10) {
+    	mm='0'+mm
+	} 
+
+	today = mm+'/'+dd+'/'+yyyy;
+	doc.setFont("arial", "bold");
+	doc.setFontSize(25);
+	doc.text(20,20, "Journal Entries as of: " + today)
+	doc.setFont("helvetica", "normal");
+	doc.setFontSize(20);
+    doc.fromHTML($('#displayContentTop').html(), 20, 25, {
+        'width': 100,
+        'elementHandlers': specialElementHandlers
+    });
+
+	doc.save('export.pdf');
+};
+

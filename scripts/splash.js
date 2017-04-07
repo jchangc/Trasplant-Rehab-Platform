@@ -11,6 +11,7 @@
 	    	var sidebarUser1 = document.getElementById('normalUserSidebar1');
 	    	var sidebarUser2 = document.getElementById('normalUserSidebar2');
 	    	var sidebarAdmin = document.getElementById('adminSidebar');
+	    	var pass = document.getElementById('passwordSidebar')
 
 
 
@@ -19,23 +20,22 @@
 			ref.on("value", function(snapshot) {
 				isAdmin = snapshot.val().isAdmin
 				username = snapshot.val().Name;
-			    console.log(snapshot.val());
+			    var name = document.getElementById("namePlaceholder")
+			    name.innerHTML = username
 			    
 			    // Displaying the welcome message
   				var welcomeMsg = document.getElementById("username");
   				welcomeMsg.innerHTML = "Welcome, " + username + "."
 
 			    if(isAdmin == "Yes") {
-			    	sidebarUser1.style.display = 'none'
-			    	sidebarUser2.style.display = 'none'
-			    	sidebarAdmin.style.display = 'visible'
-			    	console.log("LOL")
-			    } else{
-			    	sidebarUser1.style.display = 'visible'
-			    	sidebarUser2.style.display = 'visible'
-			    	sidebarAdmin.style.display = 'none'
-			    	console.log("LOL2")
+			    	console.log(sidebarAdmin)
+			    	sidebarAdmin.removeAttribute("style")
+			    } else {
+			    	sidebarUser1.removeAttribute("style")
+			    	sidebarUser2.removeAttribute("style")
 			    }
+
+			    pass.removeAttribute("style")
 
 			}, function (error) {
 			   console.log("Error: " + error.code);
