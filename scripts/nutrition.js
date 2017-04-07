@@ -3,8 +3,8 @@ function displayTitle() {
 	//*******************SERVER************************
 	firebase.auth().onAuthStateChanged(function(user) {
 	 	if (user) {
-			var pageTitle = document.getElementById("pageTitle");
-			pageTitle.innerHTML = " ";
+			// var pageTitle = document.getElementById("pageTitle");
+			// pageTitle.innerHTML = " ";
 			var userPlanName;
 			var currUser = firebase.auth().currentUser.uid;
 			var ref = firebase.database().ref("User ID");
@@ -28,7 +28,7 @@ function displayTitle() {
 						//retrieve the corresponding Nutrition Plan Name
 						NutritionName = child.val().NutritionPlan;
 						//console.log(child.val().NutritionPlan);
-						pageTitle.innerHTML = child.val().NutritionPlan;
+						//pageTitle.innerHTML = child.val().NutritionPlan;
 
 					}
 				});
@@ -49,6 +49,7 @@ function displayTitle() {
 								//ADD DIVS FOR EACH CONTENT
 								var Title = child.val().Title;
 								var Description = child.val().Description;
+								var ImageLink = child.val().ImageLink;
 								// var div1 = document.createElement('div');
 								// document.body.appendChild(div1);
 								// div1.id = 'sectionHeader';
@@ -58,21 +59,37 @@ function displayTitle() {
 								// div2.id = 'description';
 								// div2.innerHTML = Description;
 								if (Title != null && Description != null) {
-									var div1 = document.createElement('div');
-									document.getElementById("sectionTitle").appendChild(div1);
-									div1.id = 'sectionHeader';
-									div1.innerHTML = Title;
-									var div2 = document.createElement('div');
-									document.getElementById("sectionContent").appendChild(div2);
-									div2.id = 'description';
-									div2.innerHTML = Description;
-									div2.style.height = '150px';
-									var emptyDiv = document.createElement('div');
-									emptyDiv.style.height = '130px';
-									document.getElementById("sectionTitle").appendChild(emptyDiv);
-									var emptyDiv2 = document.createElement('div');
-									emptyDiv2.style.height = '10px';
-									document.getElementById("sectionContent").appendChild(emptyDiv2);
+									var contentHolder = document.getElementById('contents')
+									var div = document.createElement('div');
+									div.className = "container";
+
+
+									var innerDiv1 = document.createElement('div');
+									innerDiv1.className = "col-sm-3 title";
+									innerDiv1.innerHTML = Title;
+									div.appendChild(innerDiv1);
+									var emptyL = document.createElement('p');
+									innerDiv1.appendChild(emptyL);
+									if (ImageLink != null) {
+										//var link = document.creatElement(a);
+										//link.href = "http://i.imgur.com/4YZSX04.jpg";
+										var im = document.createElement("img");
+										im.src = ImageLink;
+										im.width = 200;
+										im.height = 200;
+										innerDiv1.appendChild(im);
+									}
+
+									var innerDiv2 = document.createElement('div');
+									innerDiv2.className = "col-sm-7 description";
+									innerDiv2.innerHTML = Description;
+									var emptyLine = document.createElement('p');
+									innerDiv2.appendChild(emptyLine);
+									div.appendChild(innerDiv2);
+
+									contentHolder.appendChild(div)
+									contentHolder.appendChild(emptyLine);
+
 								}
 							});
 						}, function(error) {
