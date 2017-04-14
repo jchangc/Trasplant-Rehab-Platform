@@ -178,7 +178,7 @@ function saveText() {
 
 displayPastEntries();
 
-var button = document.getElementById("button");
+var saveButton = document.getElementById("save");
 var exportButton = document.getElementById("export");
 
 var doc = new jsPDF();
@@ -189,7 +189,7 @@ var specialElementHandlers = {
 };
 
 
-button.onclick = function(){
+saveButton.onclick = function(){
 	saveText();
 };
 

@@ -1,6 +1,9 @@
 // Create a "close" button and append it to each list item
 var scheduleList = document.getElementsByClassName("schedule");
 var weekday = new Array(7);
+var submitButton = document.getElementById("submit");
+var pastEntries = document.getElementById("displayContent");
+
 weekday[0] =  "Sunday";
 weekday[1] = "Monday";
 weekday[2] = "Tuesday";
@@ -84,13 +87,13 @@ function populate() {
       var exRef = firebase.database().ref("Plans");
       exRef.on("value", function(snapshot) {
           snapshot.forEach(function(child) {
-            console.log(userPlanName)
+            // console.log(userPlanName)
             if (child.child("PlanName").val() == userPlanName) {
               var schedule = child.child("Schedule")
               var p;
 
-              console.log(schedule)
-              console.log(schedule.val())
+              // console.log(schedule)
+              // console.log(schedule.val())
               for (p = 0; p < 7; p++){
                 var day = schedule.child(weekday[p])
                 day.forEach(function(childSnapshot){
@@ -122,3 +125,89 @@ function intitialize(){
       };
       firebase.initializeApp(config);
 }
+
+function saveSchedule(){
+
+   var database = firebase.database();
+   firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+            console.log("Saving Schedule.")
+          // Send the data to the database
+            $('.schedule').children().each(function (obj) {
+                  if($(this)[0].classList.contains('checked')){
+                    var dayofWeek = $(this).parent()[0].id
+                    var exercise = $(this)[0].innerHTML.toLowerCase(); 
+                    var text = "completed " + exercise + "."
+                    var date = new Date();
+                    var day = date.getDate();
+                    var month = date.getMonth()+1
+                    var year = date.getFullYear();
+                    var dateStr = month + "/" + day + "/" + year + " (" + dayofWeek + ")"
+
+                    var currUser = firebase.auth().currentUser.uid;
+                    var ref = firebase.database().ref("User ID");
+                    
+                    var currUserRef = ref.child(currUser);
+
+                    var journalRef = currUserRef.child("ExerciseRecord");
+                    var newExJournal = journalRef.push();
+                    // console.log(text)
+                    // console.log(dateStr)
+
+                    newExJournal.set({
+                      content: String(text),
+                      date: String(dateStr)
+                    });
+                }
+            });
+            
+            pastEntries.innerHTML = "";
+            displayPastEntries();
+      } else {
+
+        console.log("No user logged in rn")
+        window.location = 'login.html';
+        reload();
+
+      }
+  });
+}
+
+//display past journal entries function
+function displayPastEntries() {
+
+  //Display Journal Entries
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      var currUser = firebase.auth().currentUser.uid;
+      var ref = firebase.database().ref("User ID");
+      var currUserRef = ref.child(currUser);
+
+      var ref = currUserRef.child("ExerciseRecord");
+
+      //loop through each journal entry stored
+      ref.on("value", function(snapshot) {
+        snapshot.forEach(function(child) {
+          console.log(child)
+          if (child.val().content != null) {
+            pastEntries.innerHTML += "<p>" + child.val().date + " : "
+                      + child.val().content + "</p>";
+          }
+        });
+
+      }, function (error) {
+        console.log("Error:" + error.code);
+      });
+    } else {
+      console.log("No user logged in rn")
+      window.location = 'login.html';
+      reload();
+     }
+  });
+}
+
+displayPastEntries();
+
+submitButton.onclick = function(){
+  saveSchedule();
+};
