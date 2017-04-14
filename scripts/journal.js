@@ -1,6 +1,52 @@
 // var url = "https://transplant-rehab.firebaseio.com/";
 // var firebaseRef = new Firebase(url);
 
+
+//display journal question function
+function displayQuestion() {
+	firebase.auth().onAuthStateChanged(function(user) {
+	 	if (user) {
+			var pageTitle = document.getElementById("journalQ");
+			pageTitle.innerHTML = " ";
+			var userPlanName;
+			var currUser = firebase.auth().currentUser.uid;
+			var ref = firebase.database().ref("User ID");
+			var userRef = ref.child(currUser);
+
+			//Getting the user's plan name
+			userRef.on("value", function(snapshot) {
+				userPlanName = snapshot.val().Plan;
+			}, function (error) {
+			   console.log("Error: " + error.code);
+			});
+			
+			//Getting the Journal Question from Plans
+			var planRef = firebase.database().ref("Plans");
+			var theJournalQuestion;
+			//loop through each journal entry stored
+			planRef.on("value", function(snapshot) {
+				console.log(snapshot.val());
+				snapshot.forEach(function(child) {
+					if (child.val().PlanName == userPlanName) {
+						//retrieve the corresponding Education Plan Name
+						theJournalQuestion = child.val().JournalQuestion;
+						//console.log(child.val().EducationPlan);
+						journalQ.innerHTML = child.val().JournalQuestion;
+
+					}
+				});
+
+			}, function (error) {
+				console.log("Error:" + error.code);
+			});
+		}else {
+			console.log("No user logged in rn")
+			window.location = 'login.html';
+			reload();
+		}
+	});
+
+}
 //display past journal entries function
 function displayPastEntries() {
 	//Display Journal Entries
@@ -97,8 +143,9 @@ function saveText() {
 }
 
 displayPastEntries();
+displayQuestion();
 
-var button = document.getElementById("button");
+var saveButton = document.getElementById("save");
 var exportButton = document.getElementById("export");
 
 var doc = new jsPDF();
@@ -109,7 +156,7 @@ var specialElementHandlers = {
 };
 
 
-button.onclick = function(){
+saveButton.onclick = function(){
 	saveText();
 };
 
