@@ -37,90 +37,10 @@ function displayPastEntries() {
 			reload();
 		 }
 	});
-//**************************OFFLINE TEST**************************
-	// var pastEntries = document.getElementById("displayContent");
-	// pastEntries.innerHTML = " ";
-
-	// //loop through each journal entry stored
-	// var ref = firebase.database().ref("User ID");
-	// var chloeRef = ref.child("ouYU7W1u0oZNWBaCAH9ynnoX3D92");
-
-	// var journalRef = chloeRef.child("Journal");
-
-	// journalRef.on("value", function(snapshot) {
-	// 	console.log(snapshot.val());
-	// 	var journalNum = 1;
-	// 	snapshot.forEach(function(child) {
-	// 		if (child.val().content != null) {
-	// 			pastEntries.innerHTML += "Journal" + " " + journalNum + ": "
-	// 								+ child.val().content + "<br>" + "<br>";
-	// 	    	journalNum++;
-	// 		}
-	// 	});
-	// 	//DataSnapshot journalSnapshot = chloeRef.child("Journal");
-	// 	//Iterable<DataSnapshot> journalChildren = jsnapshot.getChildren();
-	// 	// for (DataSnapshot journal : journalChildren) {
- //  // 			pastEntries.innerHTML = "Journal" + text1  + "<br>";
-
-	// 	// }
-	// }, function (error) {
-	// 	console.log("Error:" + error.code);
-	// });
-
- //  	//console.log("past entries");
-  	//**************************OFFLINE TEST**************************
 
 }
 
 function saveText() {
-	//initialize firebase 
-	// var config = {
-	//     aapiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
-	//     authDomain: "transplant-rehab.firebaseapp.com",
-	//     databaseURL: "https://transplant-rehab.firebaseio.com",
-	//     storageBucket: "transplant-rehab.appspot.com",
-	//     //messagingSenderId: "592884792214"
-	// };
-	// firebase.initializeApp(config);
-	// console.log(firebase.app().name);
-
-	// //obtaining user
-	// // var currUser = firebase.auth().currentUser.uid;
-	// // var usersRef = firebaseRef.child("User ID");
-	// // var currRef = usersRef.child(currUser);
-	// // var currJournal = currRef.child("Journal");
-
-	//var date = Date();
-	// var date = Date();
-	// date = String(date);
-
-	// var text = $('#text').val();
-
-
-	//****************OFFLINE TESTNIG*************************
-	// var text1 = document.getElementById('text').value; 
-
-	// var ref = firebase.database().ref("User ID");
-	// var chloeRef = ref.child("ouYU7W1u0oZNWBaCAH9ynnoX3D92");
-
-	// var journalRef = chloeRef.child("Journal");
-	// var newJournal = journalRef.push();
-	// newJournal.set({
-	// 	content: String(text1)
-	// });
-
-
-	// displayPastEntries();
-	// document.getElementById('text').value = "";
-	//****************OFFLINE TESTNIG*************************
-
-
-	// // newJournal.set({
-	// // 	"content": text
-	// // });
-
-	// console.log("clicked");
-
 
 //*******************Uncomment when ready to deploy onto firebase**********
 

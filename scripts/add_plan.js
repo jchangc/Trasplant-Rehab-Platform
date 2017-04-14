@@ -50,6 +50,7 @@ function savePlan() {
 			var nutrition = document.getElementById('selectnutritionplan').value;
 			var education = document.getElementById('selecteducationplan').value;
 			var pain = document.getElementById('selectpainsurvey').value;
+			var journal = document.getElementById('journalQ').value;
 
 			// Retrieve exercise data
 			var scheduleData = document.getElementsByClassName("check")
@@ -74,7 +75,7 @@ function savePlan() {
 				}
 			} 
 
-
+			console.log(journal);
 
 			var plan = firebase.database().ref("Plans");
 			var newPlan = plan.push();
@@ -91,7 +92,8 @@ function savePlan() {
 					Sunday : store[0]
 				},
 				NutritionPlan: String(nutrition),
-				EducationPlan: String(education)
+				EducationPlan: String(education),
+				JournalQuestion: String(journal)
 			});
 
 			console.log("Set Request Sent")
