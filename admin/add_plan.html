@@ -54,10 +54,11 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar" id = 'adminSidebar'>
             <li><a href="add_patient.html">Add Patient</a></li>
-            <li><a href="add_plan.html">Add Plan</a></li>
+            <li class="active"><a href="add_plan.html">Add Plan <span class="sr-only">(current)</span></a></li>
             <li><a href="create_nutrition.html">Create Nutrition</a></li>
             <li><a href="create_education.html">Create Education Materials</a></li>
             <li><a href="create_exercise.html">Create Exercise</a></li>
+            <li><a href="create_medication.html">Create Medication List</a></li>
             <li><a href="create_survey.html">Create Pain Survey</a></li>
           </ul>
         </div>
@@ -78,7 +79,7 @@
           <div class="form-group">
           <label for="selectexerciseplan">Exercise</label>
           <select class="form-control" id="selectexerciseplan" onChange="updateExercises(this.value);">
-              <option selected disabled hidden> Select exercise plan</option>
+              <option selected disabled hidden> Select Exercise Plan</option>
 <!--               Remainder populated with Javascript -->
           </select>
           </div>
@@ -102,12 +103,12 @@
             </select>
           <hr>
 
-          <!-- <div class="form-group">
-            <label for="selectpainsurvey">Pain</label>
-            <select class="form-control" id="selectpainsurvey">
-              <option selected disabled hidden>Select Pain Survey</option>
+          <div class="form-group">
+            <label for="selectmedication">Medication</label>
+            <select class="form-control" id="selectmedication">
+              <option selected disabled hidden>Select Medication Page</option>
             </select>
-          <hr> -->
+          <hr>
 
           <div class="form-group">
             <label for="journalQ">Journal Question</label>

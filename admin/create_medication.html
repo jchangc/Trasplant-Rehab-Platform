@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modify/Delete Plan</title>
+    <title>Create Education Materials</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,9 +17,7 @@
     <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-<!--     <link href="../css/checkbox.css" rel="stylesheet"> -->
     <link href="../css/dashboard.css" rel="stylesheet">
-    <link href="../css/switch.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,7 +41,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" id = "logoutButton">Logout</a></li>
+            <li><a href="#">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -58,65 +56,47 @@
             <li><a href="create_nutrition.html">Create Nutrition</a></li>
             <li><a href="create_education.html">Create Education Materials</a></li>
             <li><a href="create_exercise.html">Create Exercise</a></li>
+            <li class="active"><a href="create_medication.html">Create Medication List <span class="sr-only">(current)</span></a></li>
             <li><a href="create_survey.html">Create Pain Survey</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-        <h1 class="page-header">Modify/Delete a Plan</h1>
+        <h1 class="page-header">Create Medication List</h1>
 
         <div class="footer">
-          <div class="form-group">
-              <div class = "form">
-              <input type="text" class = "form-control" id="planname" style = "border-radius: 2px" placeholder="Plan Name">
+          <div class="container">
+            <div class = "text">
+              <textarea type="Title" id="pagetitle" placeholder="Name of Medication Plan, i.e. For Liver Transplantation" cols="80" rows="1"></textarea>
+            </div>
+          </div>
+          <hr>
+
+          <div class="container">
+            <div class = "text">
+              <textarea type="Title" id="sectiontitle" placeholder="Name of Medication" cols="80" rows="1"></textarea>
             </div>
           </div>
 
-          <hr>
-
-<!--               Exercise Frequency Selection -->
-          <div class="form-group">
-          <label for="selectexerciseplan">Exercise</label>
-          <select class="form-control" id="selectexerciseplan" onChange="updateExercises(this.value);">
-              <option selected disabled hidden> Select exercise plan</option>
-<!--               Remainder populated with Javascript -->
-          </select>
+          <div class="container">
+            <div class = "text">
+              <textarea type="Description" id="description" placeholder="Description" cols="80" rows="15"></textarea>
+            </div>
           </div>
-
-          <div class="checkbox_container" id = "exercise_list">   
-          </div>
-
-          <hr>
-
-          <div class="form-group">
-            <label for="selectnutritionplan">Nutrition</label>
-            <select class="form-control" id="selectnutritionplan">
-              <option selected disabled hidden>Select Nutrition Plan</option>
-            </select>
-          <hr>
-
-          <div class="form-group">
-            <label for="selecteducationplan">Education</label>
-            <select class="form-control" id="selecteducationplan">
-              <option selected disabled hidden>Select Education Plan</option>
-            </select>
-          <hr>
-
-          <div class="form-group">
-            <label for="selectpainsurvey">Pain</label>
-            <select class="form-control" id="selectpainsurvey">
-              <option selected disabled hidden>Select Pain Survey</option>
-            </select>
-          <hr>
+        <hr>
 
         <div class="form-group">
-          <div class = "button">
-          <button id = "modifybutton" type="button" class="btn btn-primary"> Modify Plan </button>
-          <button id = "deletebutton" type="button" class="btn btn-primary"> Delete Plan </button>
-          <a class = "hidden" id = 'delete_confirm'> Your plan has been deleted successfully. </a>
-          <a class = "hidden" id = 'modify_confirm'> Your plan has been modified successfully. </a>
+          <div class = "col-sm-3 button">
+          <button id="addbutton" type="button" class="btn btn-primary"> Add Another Medication </button>
           </div>
         </div>
+
+        <div class="form-group">
+          <div class = "col-sm-3 button">
+          <button id="submitbutton" type="button" class="btn btn-primary"> Submit </button>
+          </div>
+        </div>
+
 
         </div>
       </div>
@@ -125,24 +105,24 @@
   </div>
 
 
-    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
-        authDomain: "transplant-rehab.firebaseapp.com",
-        databaseURL: "https://transplant-rehab.firebaseio.com",
-        storageBucket: "transplant-rehab.appspot.com",
-        messagingSenderId: "592884792214"
-      };
-      firebase.initializeApp(config);
-    </script>
-    <script src="../scripts/modify_plan.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
+    authDomain: "transplant-rehab.firebaseapp.com",
+    databaseURL: "https://transplant-rehab.firebaseio.com",
+    storageBucket: "transplant-rehab.appspot.com",
+    messagingSenderId: "592884792214"
+  };
+  firebase.initializeApp(config);
+</script>
+
     <script src="../dist/js/jquery.min.js"></script>
     <script src="../dist/js/bootstrap.min.js"></script>
 
     <!-- Bootstrap core JavaScript
-    ==================================================
+    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
@@ -150,5 +130,6 @@
     <script src="../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../scripts/create_medication.js"></script>
   </body>
 </html>

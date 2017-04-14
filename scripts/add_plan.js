@@ -49,6 +49,7 @@ function savePlan() {
 			var exercise = document.getElementById('selectexerciseplan').value; 
 			var nutrition = document.getElementById('selectnutritionplan').value;
 			var education = document.getElementById('selecteducationplan').value;
+			var medication = document.getElementById('selectmedication').value;
 			var pain = document.getElementById('selectpainsurvey').value;
 			var journal = document.getElementById('journalQ').value;
 
@@ -93,6 +94,7 @@ function savePlan() {
 				},
 				NutritionPlan: String(nutrition),
 				EducationPlan: String(education),
+				Medication: String(medication),
 				JournalQuestion: String(journal)
 			});
 
@@ -205,6 +207,18 @@ educations.on("value", function(snapshot) {
 	snapshot.forEach(function(child) {
 		if (child.val().Page != null) {
 			educationPicker.innerHTML += "<option>" + child.val().Page + "</option>";
+		}
+	});
+}, function (error) {
+				console.log("Error:" + error.code);
+});
+
+var medicationPicker = document.getElementById('selectmedication');
+var medications = firebase.database().ref("Medication");
+medications.on("value", function(snapshot) {
+	snapshot.forEach(function(child) {
+		if (child.val().Page != null) {
+			medicationPicker.innerHTML += "<option>" + child.val().Page + "</option>";
 		}
 	});
 }, function (error) {
