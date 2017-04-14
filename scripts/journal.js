@@ -1,6 +1,52 @@
 // var url = "https://transplant-rehab.firebaseio.com/";
 // var firebaseRef = new Firebase(url);
 
+
+//display journal question function
+function displayQuestion() {
+	firebase.auth().onAuthStateChanged(function(user) {
+	 	if (user) {
+			var pageTitle = document.getElementById("journalQ");
+			pageTitle.innerHTML = " ";
+			var userPlanName;
+			var currUser = firebase.auth().currentUser.uid;
+			var ref = firebase.database().ref("User ID");
+			var userRef = ref.child(currUser);
+
+			//Getting the user's plan name
+			userRef.on("value", function(snapshot) {
+				userPlanName = snapshot.val().Plan;
+			}, function (error) {
+			   console.log("Error: " + error.code);
+			});
+			
+			//Getting the Journal Question from Plans
+			var planRef = firebase.database().ref("Plans");
+			var theJournalQuestion;
+			//loop through each journal entry stored
+			planRef.on("value", function(snapshot) {
+				console.log(snapshot.val());
+				snapshot.forEach(function(child) {
+					if (child.val().PlanName == userPlanName) {
+						//retrieve the corresponding Education Plan Name
+						theJournalQuestion = child.val().JournalQuestion;
+						//console.log(child.val().EducationPlan);
+						journalQ.innerHTML = child.val().JournalQuestion;
+
+					}
+				});
+
+			}, function (error) {
+				console.log("Error:" + error.code);
+			});
+		}else {
+			console.log("No user logged in rn")
+			window.location = 'login.html';
+			reload();
+		}
+	});
+
+}
 //display past journal entries function
 function displayPastEntries() {
 	//Display Journal Entries
@@ -37,90 +83,10 @@ function displayPastEntries() {
 			reload();
 		 }
 	});
-//**************************OFFLINE TEST**************************
-	// var pastEntries = document.getElementById("displayContent");
-	// pastEntries.innerHTML = " ";
-
-	// //loop through each journal entry stored
-	// var ref = firebase.database().ref("User ID");
-	// var chloeRef = ref.child("ouYU7W1u0oZNWBaCAH9ynnoX3D92");
-
-	// var journalRef = chloeRef.child("Journal");
-
-	// journalRef.on("value", function(snapshot) {
-	// 	console.log(snapshot.val());
-	// 	var journalNum = 1;
-	// 	snapshot.forEach(function(child) {
-	// 		if (child.val().content != null) {
-	// 			pastEntries.innerHTML += "Journal" + " " + journalNum + ": "
-	// 								+ child.val().content + "<br>" + "<br>";
-	// 	    	journalNum++;
-	// 		}
-	// 	});
-	// 	//DataSnapshot journalSnapshot = chloeRef.child("Journal");
-	// 	//Iterable<DataSnapshot> journalChildren = jsnapshot.getChildren();
-	// 	// for (DataSnapshot journal : journalChildren) {
- //  // 			pastEntries.innerHTML = "Journal" + text1  + "<br>";
-
-	// 	// }
-	// }, function (error) {
-	// 	console.log("Error:" + error.code);
-	// });
-
- //  	//console.log("past entries");
-  	//**************************OFFLINE TEST**************************
 
 }
 
 function saveText() {
-	//initialize firebase 
-	// var config = {
-	//     aapiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
-	//     authDomain: "transplant-rehab.firebaseapp.com",
-	//     databaseURL: "https://transplant-rehab.firebaseio.com",
-	//     storageBucket: "transplant-rehab.appspot.com",
-	//     //messagingSenderId: "592884792214"
-	// };
-	// firebase.initializeApp(config);
-	// console.log(firebase.app().name);
-
-	// //obtaining user
-	// // var currUser = firebase.auth().currentUser.uid;
-	// // var usersRef = firebaseRef.child("User ID");
-	// // var currRef = usersRef.child(currUser);
-	// // var currJournal = currRef.child("Journal");
-
-	//var date = Date();
-	// var date = Date();
-	// date = String(date);
-
-	// var text = $('#text').val();
-
-
-	//****************OFFLINE TESTNIG*************************
-	// var text1 = document.getElementById('text').value; 
-
-	// var ref = firebase.database().ref("User ID");
-	// var chloeRef = ref.child("ouYU7W1u0oZNWBaCAH9ynnoX3D92");
-
-	// var journalRef = chloeRef.child("Journal");
-	// var newJournal = journalRef.push();
-	// newJournal.set({
-	// 	content: String(text1)
-	// });
-
-
-	// displayPastEntries();
-	// document.getElementById('text').value = "";
-	//****************OFFLINE TESTNIG*************************
-
-
-	// // newJournal.set({
-	// // 	"content": text
-	// // });
-
-	// console.log("clicked");
-
 
 //*******************Uncomment when ready to deploy onto firebase**********
 
@@ -177,6 +143,7 @@ function saveText() {
 }
 
 displayPastEntries();
+displayQuestion();
 
 var saveButton = document.getElementById("save");
 var exportButton = document.getElementById("export");

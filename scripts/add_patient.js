@@ -24,13 +24,19 @@ function savePatient() {
        			Email: String(email),
        			Plan: String(plan),
        			isAdmin: "No",
-       			Journal: ""
+       			Journal: "",
+                        ExerciseRecord: ""
        		});
 
        		var journalRef = firebase.database().ref("/User ID/" + currUID).child("Journal");
        		journalRef.set({
        			Entry1: " "
        		});
+
+                  var exerciseRef = firebase.database().ref("/User ID/" + currUID).child("ExerciseRecord");
+                  exerciseRef.set({
+                        Entry1: " "
+                  });
 
 
        		// Need to sign out again after successful registration
