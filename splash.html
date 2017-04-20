@@ -54,8 +54,10 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+<!--       <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar"> -->
+      <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas">
           <ul class="nav nav-sidebar" id = 'normalUserSidebar1' style = 'display: none'>
             <li><a href="exercise_schedule.html">Exercise Schedule<span class="sr-only">(current)</span></a></li>
             <li><a href="exercises.html">Exercises</a></li>
@@ -81,10 +83,17 @@
             <li><a href="change_password.html">Change Password</a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-9 col-md-10 main">
+          <!-- Sidebar toggle -->
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+              <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+          </p>
           <h1 class="page-header" id = 'username'></h1>
             <h4 class="text">Select your option on the navigation pane to your left.</h4>
         </div>
+      </div>
     </div>
 
     <!-- Bootstrap core JavaScript & Firebase Crap
