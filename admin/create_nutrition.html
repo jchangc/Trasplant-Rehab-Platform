@@ -48,8 +48,8 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+      <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas">
           <ul class="nav nav-sidebar" id = 'adminSidebar'>
             <li><a href="add_patient.html">Add Patient</a></li>
             <li><a href="add_plan.html">Add Plan</a></li>
@@ -60,7 +60,13 @@
             <li><a href="create_survey.html">Create Pain Survey</a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-9 col-md-10 main">
+          <!-- Sidebar toggle -->
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+              <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+          </p>
 
           <h1 class="page-header">Create Nutrition</h1>
 
@@ -137,5 +143,6 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="../scripts/create_nutrition.js"></script>
+    <script src="../scripts/toggle.js"></script>
   </body>
 </html>

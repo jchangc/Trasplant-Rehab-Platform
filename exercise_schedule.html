@@ -56,8 +56,8 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+      <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="exercise_schedule.html">Exercise Schedule<span class="sr-only">(current)</span></a></li>
             <li><a href="exercises.html">Exercises</a></li>
@@ -70,9 +70,13 @@
             <li><a href="journal.html">Journal</a></li>
           </ul>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="col-sm-9 col-md-10 main">
+          <!-- Sidebar toggle -->
+          <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+              <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+          </p>
           <h1 class="page-header">Exercise Schedule</h1>
           <div class = "row">
             <div class="container">
@@ -138,7 +142,10 @@
               <h4 id ='displayContent'></h4>
           </div>
         </div>
+      </div>
     </div>
+  </div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -153,5 +160,7 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
     <script src="scripts/exercise_schedule.js"></script>
     <script src="scripts/logout.js"></script>
+    <script src="scripts/toggle.js"></script>
+
   </body>
 </html>

@@ -49,13 +49,6 @@
 		}
 	});
 
-	$(document).ready(function() {
-	  	$('[data-toggle=offcanvas]').click(function() {
-	    	$('.row-offcanvas').toggleClass('active');
-	  	});
-	});
-
-
 	bLogout.addEventListener('click', e => {
 		console.log('Logging Out')
 		firebase.auth().signOut();
