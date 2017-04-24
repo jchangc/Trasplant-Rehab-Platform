@@ -127,38 +127,51 @@ function savePlan() {
 function updateExercises(value) {
 	console.log("updating exercises")
 	var exerciseElement = document.getElementById("exercise_list")
-	var exercises = firebase.database().ref("Exercise Plans/" + value);
+	var exercises = firebase.database().ref("Exercise Plans");
+	var exercise;
+
+	exercises.on("value", function(snapshot) {
+		snapshot.forEach(function(child) {
+			if (child.val().PlanName == value) {
+				exercise = firebase.database().ref("Exercise Plans/" + child.key);
+			}
+		});
+	}, function (error) {
+				console.log("Error:" + error.code);
+	});
 
 	// Clear out old content
 	exerciseElement.innerHTML = ""
 
-    exercises.on("value", function(snapshot) {
+    exercise.on("value", function(snapshot) {
     	// Extract names
     	snapshot.forEach(function(child) {
-    		// Append label
-    		var exerciseLabel = document.createElement("p")
-    		exerciseLabel.innerHTML = "<b>" + child.child("Title").val() + "</b>" 
-    		exerciseElement.append(exerciseLabel)
+    		if (child.child("Title").val() != null) {
+	    		// Append label
+	    		var exerciseLabel = document.createElement("p")
+	    		exerciseLabel.innerHTML = "<b>" + child.child("Title").val() + "</b>" 
+	    		exerciseElement.append(exerciseLabel)
 
-    		// Create holder
-    		var container = document.createElement("div")
-    		container.setAttribute("class", "check")
-    		container.setAttribute("id", child.child("Title").val())
-    		var i;
+	    		// Create holder
+	    		var container = document.createElement("div")
+	    		container.setAttribute("class", "check")
+	    		container.setAttribute("id", child.child("Title").val())
+	    		var i;
 
-    		// Create boxes
-    		for (i = 0; i < 7; i++){
-    			var box = document.createElement("input")
-    			box.setAttribute("type", "checkbox")
-    			box.setAttribute("id", child.child("Title").val() + " " +  i)
-    			var label = document.createElement('label')
-    			label.setAttribute("for", child.child("Title").val() + " " + i)
-    			label.innerHTML = "<span></span>" + week[i]
-    			container.append(box)
-    			container.append(label)
-    		}
+	    		// Create boxes
+	    		for (i = 0; i < 7; i++){
+	    			var box = document.createElement("input")
+	    			box.setAttribute("type", "checkbox")
+	    			box.setAttribute("id", child.child("Title").val() + " " +  i)
+	    			var label = document.createElement('label')
+	    			label.setAttribute("for", child.child("Title").val() + " " + i)
+	    			label.innerHTML = "<span></span>" + week[i]
+	    			container.append(box)
+	    			container.append(label)
+	    		}
 
-    		exerciseElement.append(container)
+	    		exerciseElement.append(container)
+	    	}
         });
    });
 }
@@ -181,7 +194,7 @@ var exercises = firebase.database().ref("Exercise Plans");
 exercises.on("value", function(snapshot) {
 	snapshot.forEach(function(child) {
 		if (child.val().PlanName != null) {
-			exercisePicker.innerHTML += "<option>" + child.val().PlanName + "</option>";
+			exercisePicker.innerHTML += "<option value=\"" + child.val().PlanName + "\">" + child.val().PlanName + "</option>";
 		}
 	});
 }, function (error) {
