@@ -50,7 +50,6 @@ function savePlan() {
 			var nutrition = document.getElementById('selectnutritionplan').value;
 			var education = document.getElementById('selecteducationplan').value;
 			var medication = document.getElementById('selectmedication').value;
-			var pain = document.getElementById('selectpainsurvey').value;
 			var journal = document.getElementById('journalQ').value;
 
 			// Retrieve exercise data
@@ -181,8 +180,8 @@ var exercisePicker = document.getElementById('selectexerciseplan');
 var exercises = firebase.database().ref("Exercise Plans");
 exercises.on("value", function(snapshot) {
 	snapshot.forEach(function(child) {
-		if (child.key != null) {
-			exercisePicker.innerHTML += "<option value=\"" + child.key + "\">" + child.key + "</option>";
+		if (child.val().PlanName != null) {
+			exercisePicker.innerHTML += "<option>" + child.val().PlanName + "</option>";
 		}
 	});
 }, function (error) {
