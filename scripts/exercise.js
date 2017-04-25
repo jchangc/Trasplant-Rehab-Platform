@@ -16,13 +16,31 @@ function displayTitle() {
 			});
 
 
-			//Getting the Medication's Title from Plans
+			//Getting the Education's Title from Plans
 			var planRef = firebase.database().ref("Plans");
 
-			var edRef = firebase.database().ref("Exercise Plans");
-			edRef.on("value", function(snapshot) {
+
+			var exName;
+
+			planRef.on("value", function(snapshot) {
+				console.log(snapshot.val());
 				snapshot.forEach(function(child) {
 					if (child.val().PlanName == userPlanName) {
+						//retrieve the corresponding Exercise Plan Name
+						exName = child.val().ExercisePlan;
+					}
+				});
+
+			}, function (error) {
+				console.log("Error:" + error.code);
+			});
+
+
+			var edRef = firebase.database().ref("Exercise Plans");
+
+			edRef.on("value", function(snapshot) {
+				snapshot.forEach(function(child) {
+					if (child.val().PlanName == exName) {
 						//LOOP THROUGH ALL CONTENTS AND DISPLAY EACH ONE ACCORDINGLY	
 						var childRef = edRef.child(child.key);
 						console.log(childRef)
@@ -32,15 +50,15 @@ function displayTitle() {
 								//ADD DIVS FOR EACH CONTENT
 								var Title = child.val().Title;
 								var Description = child.val().Description;
-								var VideoLink = child.val.VideoLink;
-								var ImageLink = child.val.ImageLink;
+								var VideoLink = child.val().VideoLink;
+								var ImageLink = child.val().ImageLink;
 
 								if (Title != null && Description != null) {
 									
 									var contentHolder = document.getElementById('contents')
 									
 									// The overall conatiner
-									var row = document.createElement('div');
+									var div = document.createElement('div');
 									div.className = "row";
 
 									// Create anchor, add name
@@ -48,10 +66,22 @@ function displayTitle() {
 
 									// Inner divs created here
 
-									var innerDiv1 = document.createElement('div');
-									innerDiv1.className = "col-md-7";
-									innerDiv1.innerHTML = VideoLink;
-									div.appendChild(innerDiv1);
+								    if (VideoLink != "") {
+										var innerDiv1 = document.createElement('iframe');
+										innerDiv1.className = "col-md-7";
+										innerDiv1.width = 650;
+										innerDiv1.height = 350;
+										innerDiv1.src = VideoLink;
+										div.appendChild(innerDiv1);
+									} else if (ImageLink != "") {
+										var innerDiv1 = document.createElement('img');
+										innerDiv1.className = "col-md-7";
+
+										innerDiv1.width = 650;
+										innerDiv1.height = 350;
+										innerDiv1.src = ImageLink;
+										div.appendChild(innerDiv1);
+									}
 
 
 									var innerDiv2 = document.createElement('div');
@@ -63,11 +93,13 @@ function displayTitle() {
 									var h3 = document.createElement('h3');
 									h3.innerHTML = Title;
 
+									innerDiv2.appendChild(h3);
 									innerDiv2.appendChild(p);
-									innerDiv.appendChild(h3);
 									div.appendChild(innerDiv2);
 
 									contentHolder.appendChild(div)
+									var emptyLine = document.createElement('p');
+									contentHolder.appendChild(emptyLine);
 								}
 							});
 						}, function(error) {
