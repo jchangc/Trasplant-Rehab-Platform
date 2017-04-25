@@ -1,6 +1,7 @@
 // var url = "https://transplant-rehab.firebaseio.com/";
 // var firebaseRef = new Firebase(url);
 
+var bLogout = document.getElementById('logoutButton');
 
 //display journal question function
 function displayQuestion() {
@@ -185,5 +186,12 @@ exportButton.onclick = function(){
     });
 
 	doc.save('export.pdf');
+};
+
+bLogout.onclick = function(){
+	console.log('Logging Out')
+	firebase.auth().signOut();
+	window.location = 'login.html';
+	reload();
 };
 

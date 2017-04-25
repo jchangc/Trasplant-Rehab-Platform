@@ -18,12 +18,20 @@ function savePatient() {
        		var lastname = document.getElementById('lastname').value; 
        		var name = String(firstname) + " " + String(lastname);
        		var plan = document.getElementById('selectplan').value;
+                  
+                  var admincheck = document.getElementById('admincheck');
+                  var adminstring;
+                  if (admincheck.checked == true) {
+                        adminstring = "Yes";
+                  } else {
+                        adminstring = "No";
+                  }
 
        		userList.set({
        			Name: String(name),
        			Email: String(email),
        			Plan: String(plan),
-       			isAdmin: "No",
+       			isAdmin: String(adminstring),
        			Journal: "",
                         ExerciseRecord: ""
        		});
@@ -124,7 +132,7 @@ savebutton.onclick = function(){
 bLogout.onclick = function(){
 	console.log('Logging Out')
 	firebase.auth().signOut();
-	window.location = 'login.html';
+	window.location = '../login.html';
 	reload();
 };
 

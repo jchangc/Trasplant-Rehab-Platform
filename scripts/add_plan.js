@@ -1,3 +1,5 @@
+var bLogout = document.getElementById('logoutButton');
+
 var week = new Array(7);
 week[0] =  "Sunday";
 week[1] = "Monday";
@@ -243,7 +245,12 @@ var savebutton = document.getElementById("savebutton");
 
 savebutton.onclick = function(){savePlan()};
 
-
+bLogout.onclick = function(){
+	console.log('Logging Out')
+	firebase.auth().signOut();
+	window.location = '../login.html';
+	reload();
+};
 
 
 

@@ -1,3 +1,4 @@
+var bLogout = document.getElementById('logoutButton');
 
 function displayTitle() {
 	//*******************SERVER************************
@@ -106,6 +107,14 @@ function displayTitle() {
 			reload();
 		}
 	});
+}
+
+bLogout.onclick = function(){
+	console.log('Logging Out')
+	firebase.auth().signOut();
+	window.location = 'login.html';
+	reload();
+};
 	//*******************SERVER************************
 	//*******************OFFLINE************************
 		// //FOR DISPLAYING TITLE
@@ -197,10 +206,11 @@ function displayTitle() {
 		// 	});
 	//*******************OFFLINE************************
 		
-}
+
 
 
 displayTitle();
+
 
 
 
