@@ -1,3 +1,4 @@
+var bLogout = document.getElementById('logoutButton');
 
 function displayTitle() {
 	//*******************SERVER************************
@@ -118,6 +119,12 @@ function displayTitle() {
 	});		
 }
 
+bLogout.addEventListener('click', e => {
+	console.log('Logging Out')
+	firebase.auth().signOut();
+	window.location = 'login.html';
+  	reload();
+});
 
 displayTitle();
 
