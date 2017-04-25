@@ -1,3 +1,5 @@
+var bLogout = document.getElementById('logoutButton');
+
 var Exercises = [];
 var Descriptions = [];
 var Images = [];
@@ -76,7 +78,12 @@ var savebutton = document.getElementById("submitbutton");
 
 savebutton.onclick = function(){savePlan()};
 
-
+bLogout.onclick = function(){
+	console.log('Logging Out')
+	firebase.auth().signOut();
+	window.location = '../login.html';
+	reload();
+};
 
 
 

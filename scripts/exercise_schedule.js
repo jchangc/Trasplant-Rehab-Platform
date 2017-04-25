@@ -1,3 +1,5 @@
+var bLogout = document.getElementById('logoutButton');
+
 // Create a "close" button and append it to each list item
 var scheduleList = document.getElementsByClassName("schedule");
 var weekday = new Array(7);
@@ -210,4 +212,11 @@ displayPastEntries();
 
 submitButton.onclick = function(){
   saveSchedule();
+};
+
+bLogout.onclick = function(){
+  console.log('Logging Out')
+  firebase.auth().signOut();
+  window.location = 'login.html';
+  reload();
 };
