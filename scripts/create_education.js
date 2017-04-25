@@ -1,7 +1,14 @@
 var Titles = [];
 var Descriptions = [];
 
+
+var addMSG = document.getElementById('addSec');
+var confirmMsg = document.getElementById('confirm');
+var success = true;
+
+
 function saveSection() {
+	success = true;
 	var section = document.getElementById('sectiontitle').value; 
 	var description = document.getElementById('description').value;
 
@@ -10,6 +17,16 @@ function saveSection() {
 
 	document.getElementById('sectiontitle').value = "";
 	document.getElementById('description').value = "";
+
+	alert("Section added. Please enter a new section.");
+
+	// 	setTimeout(function(){
+	// 	console.log("assessing whether to remove hidden")
+	// 	if(success == true){
+	// 		console.log("trying to remove hidden")
+	// 		addMSG.classList.remove('hidden')
+	// 	}
+	// }, 1000)
 }
 
 
@@ -42,6 +59,9 @@ function savePlan() {
 			document.getElementById('pagetitle').value = "";
 			document.getElementById('sectiontitle').value = "";
 			document.getElementById('description').value = "";
+
+			alert("Education plan has been successfully created.");
+
 
 			console.log("clicked");
 
