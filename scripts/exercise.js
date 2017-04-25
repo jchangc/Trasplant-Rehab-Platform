@@ -71,7 +71,12 @@ function displayTitle() {
 										innerDiv1.className = "col-md-7";
 										innerDiv1.width = 650;
 										innerDiv1.height = 350;
-										innerDiv1.src = VideoLink;
+										var id = VideoLink.split("/")[3]
+										if(VideoLink.split("/")[2] == "vimeo.com"){
+											innerDiv1.src = "https://player.vimeo.com/video/" + id
+										} else {
+											innerDiv1.src = VideoLink
+										}
 										div.appendChild(innerDiv1);
 									} else if (ImageLink != "") {
 										var innerDiv1 = document.createElement('img');
