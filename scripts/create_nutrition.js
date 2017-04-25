@@ -16,6 +16,9 @@ function saveExercise() {
 	document.getElementById('foodname').value = "";
 	document.getElementById('description').value = "";
 	document.getElementById('imagelink').value = "";
+
+	alert("Section added. Please enter another section.");
+
 }
 
 function savePlan() {
@@ -53,6 +56,9 @@ function savePlan() {
 			document.getElementById('imagelink').value = "";
 
 			console.log("clicked");
+
+			alert("Nutrition plan successfully created.");
+
 
 		 } else {
 		 	console.log("No user logged in rn")

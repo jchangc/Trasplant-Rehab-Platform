@@ -5,6 +5,7 @@ var scheduleList = document.getElementsByClassName("schedule");
 var weekday = new Array(7);
 var submitButton = document.getElementById("submit");
 var pastEntries = document.getElementById("displayContent");
+var exportButton = document.getElementById("export");
 
 weekday[0] =  "Sunday";
 weekday[1] = "Monday";
@@ -210,6 +211,13 @@ function displayPastEntries() {
 
 displayPastEntries();
 
+var doc = new jsPDF();
+var specialElementHandlers = {
+  '#class': function (element, renderer) {
+            return true;
+      }
+};
+
 submitButton.onclick = function(){
   saveSchedule();
 };
@@ -219,4 +227,31 @@ bLogout.onclick = function(){
   firebase.auth().signOut();
   window.location = 'login.html';
   reload();
+};
+
+exportButton.onclick = function(){
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1
+  var yyyy = today.getFullYear();
+  if(dd<10) {
+      dd='0'+dd
+  } 
+
+  if(mm<10) {
+      mm='0'+mm
+  } 
+
+  today = mm+'/'+dd+'/'+yyyy;
+  doc.setFont("arial", "bold");
+  doc.setFontSize(25);
+  doc.text(20,20, "Journal Entries as of: " + today)
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(20);
+    doc.fromHTML($('#displayContentTop').html(), 20, 25, {
+        'width': 100,
+        'elementHandlers': specialElementHandlers
+    });
+
+  doc.save('export.pdf');
 };

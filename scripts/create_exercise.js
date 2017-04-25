@@ -20,6 +20,8 @@ function saveExercise() {
 	document.getElementById('description').value = "";
 	document.getElementById('imagelink').value = "";
 	document.getElementById('videolink').value = "";
+
+	alert("Exercise added. Please enter another excercise.");
 }
 
 function savePlan() {
@@ -61,6 +63,9 @@ function savePlan() {
 			document.getElementById('videolink').value = "";
 
 			console.log("clicked");
+
+			alert("Exercise plan successfully created.");
+
 
 		 } else {
 			console.log("No user logged in rn")

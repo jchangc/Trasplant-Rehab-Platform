@@ -124,6 +124,8 @@ savebutton.onclick = function(){
 		alert("Please select a valid plan.")
 	} else{
 		savePatient();
+            alert("New patient user succesully created.")
+
 	}
 };
 

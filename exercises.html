@@ -7,7 +7,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>Transplant Rehabilitation Options - Exercises</title>
 
@@ -81,7 +80,7 @@
 
           <h1 class="page-header">Exercises</h1>
 
-          <div class="row placeholders">
+<!--           <div class="row placeholders">
             <a href="#pushup anchor"><div class="col-xs-6 col-sm-3 placeholder">
               <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Push Up</h4></a>	
@@ -101,27 +100,23 @@
               <a href="#back anchor"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Back Stretch</h4></a>
               <span class="text-muted">Intermediate</span>
-            </div>
-          </div>
+            </div> -->
 
     <!-- Exercise Content -->
 
-    <div class="container">
+    <div class="container" id = 'contents'>
         <!-- Project One -->
         <div class="row">
-        <a name="pushup anchor"><h1 style="padding-top: 40px; margin-top: -40px;"></h1></a>
+            <a name="pushup anchor"></a>
             <div class="col-md-7">
-                <a href="#">
+<!--                 <a href="#"> -->
                     <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
+<!--                 </a> -->
             </div>
             <div class="col-md-5">
                 <h3>Push Up</h3>
-<!--                 <h4>(insert text here)</h4> -->
                 <p>To be filled.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
-            \
         </div>
         <!-- /.row -->
 
@@ -129,17 +124,15 @@
 
         <!-- Project Two -->
         <div class="row">
-        	<a name="situp anchor"><h1 style="padding-top: 40px; margin-top: -40px;"></h1></a>
+        	<a name="situp anchor"></a>
             <div class="col-md-7">
-                <a href="#">
+<!--                 <a href="#"> -->
                     <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
+<!--                 </a> -->
             </div>
             <div class="col-md-5">
                 <h3>Sit Up</h3>
-<!--                 <h4>(insert text here)</h4> -->
                 <p>To be filled.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->
@@ -157,9 +150,7 @@
             <div class="col-md-5">
             	
                 <h3>Hamstring Stretch</h3>
-<!--                 <h4>(insert text here)</h4> -->
                 <p>To be filled.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->
@@ -176,9 +167,7 @@
             </div>
             <div class="col-md-5">
                 <h3>Back Stretch</h3>
-<!--                 <h4>(insert text here)</h4> -->
                 <p>To be filled.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
         <!-- /.row -->
@@ -187,7 +176,20 @@
       </div>
     </div>
     </div>
+      <!--FIREBASE INITIALIZATION -->
 
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
+        authDomain: "transplant-rehab.firebaseapp.com",
+        databaseURL: "https://transplant-rehab.firebaseio.com",
+        storageBucket: "transplant-rehab.appspot.com",
+        messagingSenderId: "592884792214"
+      };
+      firebase.initializeApp(config);
+    </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -198,6 +200,7 @@
     <script src="assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="scripts/exercise.js"></script>
     <script src="scripts/toggle.js"></script>
   </body>
 </html>

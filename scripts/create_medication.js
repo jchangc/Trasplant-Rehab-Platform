@@ -12,6 +12,9 @@ function saveSection() {
 
 	document.getElementById('sectiontitle').value = "";
 	document.getElementById('description').value = "";
+
+	alert("Section added. Please enter another section");
+
 }
 
 
@@ -46,6 +49,9 @@ function savePlan() {
 			document.getElementById('description').value = "";
 
 			console.log("clicked");
+
+			alert("Medication plan successfully created.");
+
 
 		 } else {
 		 	console.log("No user logged in rn")
