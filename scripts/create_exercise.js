@@ -21,7 +21,7 @@ function saveExercise() {
 	document.getElementById('imagelink').value = "";
 	document.getElementById('videolink').value = "";
 
-	alert("Exercise added. Please enter another excercise.");
+	alert("Exercise added. Please enter another exercise.");
 }
 
 function savePlan() {
