@@ -73,11 +73,9 @@ function savePatient() {
 
 var planPicker = document.getElementById('selectplan');
 var plans = firebase.database().ref("Plans");
-console.log(plans);
 plans.on("value", function(snapshot) {
 	snapshot.forEach(function(child) {
 		if (child.val().PlanName != null) {
-                  console.log(child.val().PlanName);
 			planPicker.innerHTML += "<option>" + child.val().PlanName + "</option>";
 		}
 	});
