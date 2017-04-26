@@ -21,8 +21,6 @@
     <link href="../css/dashboard.css" rel="stylesheet">
     <link href="../css/switch.css" rel="stylesheet">
 
-    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
-    <script src="../scripts/firebase_init.js"</script>
   </head>
 
   <body>
@@ -49,7 +47,7 @@
       <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-sm-3 col-md-2 sidebar-offcanvas">
           <ul class="nav nav-sidebar" id = 'adminSidebar'>
-            <li class="active"><a href="add_patient.html">Add User <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="add_patient.html">Add Patient <span class="sr-only">(current)</span></a></li>
             <li><a href="add_plan.html">Add Plan</a></li>
             <li><a href="create_nutrition.html">Create Nutrition</a></li>
             <li><a href="create_education.html">Create Education Materials</a></li>
@@ -57,6 +55,9 @@
             <li><a href="create_medication.html">Create Medication List</a></li>
             <li><a href="create_survey.html">Create Pain Survey</a></li>
           </ul>
+          <div id="logo">
+            <img src="../media/penn_logo.png" alt="Penn Logo" style="width:90%;height:90%;">
+          </div>
         </div>
         <div class="col-sm-9 col-md-10 main">
           <!-- Sidebar toggle -->
@@ -105,17 +106,12 @@
           <div class = "col-sm-1 form-group">
               <button id = "savebutton" type="button" class="btn btn-primary"> Add User </button>
           </div>
-
         </div>
 
         </div>
       </div>
-    </div>
-    </div>
   </div>
 
-    <script src="../dist/js/jquery.min.js"></script>
-    <script src="../dist/js/bootstrap.min.js"></script>
  
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -126,7 +122,11 @@
     <script src="../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="../scripts/add_patient.js"></script>
     <script src="../scripts/toggle.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script src="../scripts/firebase_init.js"</script>
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../scripts/add_patient.js"></script>
   </body>
 </html>

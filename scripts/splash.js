@@ -2,6 +2,7 @@
 
 	var database = firebase.database();
 	var bLogout = document.getElementById('logoutButton');
+	var logo = document.getElementById('logo')
 
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user){
@@ -35,7 +36,8 @@
 			    	sidebarUser2.removeAttribute("style")
 			    }
 
-			    pass.removeAttribute("style")
+			    pass.style.removeProperty("display")
+			    logo.removeAttribute("style")
 
 			}, function (error) {
 			   console.log("Error: " + error.code);

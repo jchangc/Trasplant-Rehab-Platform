@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Catamaran);
 body {
   padding-top: 50px;
+  overflow-x: hidden;
+  height:100%;
+  width:100%;
   font: 'Catamaran',sans-serif;
 }
 
@@ -30,6 +33,13 @@ p, div {
   color: #edf2f7;
 }
 
+#logo {
+  position: fixed;
+  left: 15px;
+  bottom: 0px;
+  height:10%;
+  width:15%;
+}
 /*
  * Sidebar
  */

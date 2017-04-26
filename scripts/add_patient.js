@@ -71,35 +71,13 @@ function savePatient() {
 	console.log("clicked");
 }
 
-// read from the database what nutrition/exercise/education pages we 
-// have, and display them in the selection menus
-
-// firebase.auth().onAuthStateChanged(function(user) {
-// 		if (user){
-// 			var currUID = firebase.auth().currentUser.uid;
-// 			console.log(currUID);
-// 			var ref = firebase.database().ref("/User ID/" + currUID);
-// 			ref.on("value", function(snapshot) {
-// 				var isAdmin = snapshot.val().isAdmin
-// 				console.log(isAdmin)
-
-// 				if(isAdmin == "No"){
-// 					window.location = 'splash.html';
-//   					reload();
-// 				}
-// 			}, function (error) {
-// 			   console.log("Error: " + error.code);
-// 			});
-// 		}
-// });
-
-
 var planPicker = document.getElementById('selectplan');
-
 var plans = firebase.database().ref("Plans");
+console.log(plans);
 plans.on("value", function(snapshot) {
 	snapshot.forEach(function(child) {
 		if (child.val().PlanName != null) {
+                  console.log(child.val().PlanName);
 			planPicker.innerHTML += "<option>" + child.val().PlanName + "</option>";
 		}
 	});
