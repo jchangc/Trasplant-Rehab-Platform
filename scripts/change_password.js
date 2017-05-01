@@ -5,6 +5,7 @@ var newP = document.getElementById("new_password");
 var newPCheck = document.getElementById("new_password_check");
 var bLogout = document.getElementById('logoutButton');
 var confirmMsg = document.getElementById('confirm');
+var logo = document.getElementById('logo')
 var userInfo;
 var userEmail;
 var errorThrown = false;
@@ -35,7 +36,7 @@ var passwordChanged = false;
 				sidebarUser1.removeAttribute("style")
 				sidebarUser2.removeAttribute("style")
 			}
-
+			    pass.style.removeProperty("display")
 				pass.removeAttribute("style")
 
 			}, function (error) {

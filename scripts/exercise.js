@@ -69,7 +69,7 @@ function displayTitle() {
 
 								    if (VideoLink != "") {
 										var innerDiv1 = document.createElement('iframe');
-										innerDiv1.className = "col-md-7";
+										innerDiv1.className = "col-sm-7";
 										innerDiv1.width = 650;
 										innerDiv1.height = 350;
 										var id = VideoLink.split("/")[3]
@@ -81,7 +81,7 @@ function displayTitle() {
 										div.appendChild(innerDiv1);
 									} else if (ImageLink != "") {
 										var innerDiv1 = document.createElement('img');
-										innerDiv1.className = "col-md-7";
+										innerDiv1.className = "col-sm-7";
 
 										innerDiv1.width = 650;
 										innerDiv1.height = 350;

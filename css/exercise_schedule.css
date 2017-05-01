@@ -30,6 +30,15 @@ p, div {
   color: #edf2f7;
 }
 
+/*#logo {
+  position: fixed;
+  left: 15px;
+  bottom: 0px;
+  height:10%;
+  width:15%;
+}*/
+
+
 /*
  * Sidebar
  */
