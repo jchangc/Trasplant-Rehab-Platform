@@ -1,17 +1,48 @@
 var bLogout = document.getElementById('logoutButton');
+var success = true;
+var confirmMsg = document.getElementById('confirm');
+
+var config = {
+    apiKey: "AIzaSyCK2L9denM40KSqqNExFrRnZhGpijcvgDc",
+    authDomain: "transplant-rehab.firebaseapp.com",
+    databaseURL: "https://transplant-rehab.firebaseio.com",
+    storageBucket: "transplant-rehab.appspot.com",
+    messagingSenderId: "592884792214"
+};
+var currUID;
+firebase.initializeApp(config);
+var app = firebase.initializeApp(config, 'authApp');
+firebase.auth().onAuthStateChanged(function(user) {
+if (user) {
+    currUID = firebase.auth().currentUser.uid;
+    var ref = firebase.database().ref("/User ID/" + currUID);
+    ref.on("value", function(snapshot) {
+        var isAdmin = snapshot.val().isAdmin
+
+        if(isAdmin == "No"){
+        window.location = '../splash.html';
+        window.reload();
+    }
+    }, function (error) {
+        console.log("Error: " + error.code);
+    });
+
+    } else {
+        window.location = '../login.html';
+        window.reload();
+    }
+});
 
 function savePatient() {
       	var database = firebase.database();
       	var email = document.getElementById('email').value;
       	var password = document.getElementById('password').value;
+      	var authApp = app.auth();
 
-      	firebase.auth().createUserWithEmailAndPassword(email, password)
-      	.then(function(firebaseUser) {
-       		// Success
-       		console.log("Successfully added user.")
+      	authApp.createUserWithEmailAndPassword(email, password).then(function(firebaseUser) {
 
        		// Obtain user id
-       		var currUID = firebase.auth().currentUser.uid;
+       		var currUID = authApp.currentUser.uid;
        		var userList = firebase.database().ref("/User ID/" + currUID);
 
        		var firstname = document.getElementById('firstname').value;
@@ -41,34 +72,28 @@ function savePatient() {
        			Entry1: " "
        		});
 
-                  var exerciseRef = firebase.database().ref("/User ID/" + currUID).child("ExerciseRecord");
-                  exerciseRef.set({
-                        Entry1: " "
-                  });
+            var exerciseRef = firebase.database().ref("/User ID/" + currUID).child("ExerciseRecord");
+            exerciseRef.set({
+                Entry1: " "
+            });
 
-
-       		// Need to sign out again after successful registration
-       		firebase.auth().signOut().then(function() {
-  				// Sign-out successful.
-  			}, function(error) {
- 				// An error happened.
- 			});
        	})
       	.catch(function(error) {
        		// Error Handling
-       		console.log("Failed to add user. See error for details.");
+       		console.log("Failed to add user.");
        		alert("Failed to add user. ERROR: " + error.message);
        		console.log(error.code);
        		console.log(error.message);
+       		success == false
        	});
 
-      	firebase.auth().signOut().then(function() {
-		// Sign-out successful.
-	}).catch(function(error) {
-		// An error happened.
-	});
-
-	console.log("clicked");
+       	setTimeout(function(){
+			console.log("Assessing whether to show confirmation message.")
+			if(success == true){
+				console.log("Trying to remove hidden.")
+				confirmMsg.classList.remove('hidden')
+			}
+		}, 1500)
 }
 
 var planPicker = document.getElementById('selectplan');
@@ -100,8 +125,6 @@ savebutton.onclick = function(){
 		alert("Please select a valid plan.")
 	} else{
 		savePatient();
-            alert("New patient user succesully created.")
-
 	}
 };
 

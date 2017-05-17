@@ -109,7 +109,7 @@ function savePlan() {
 			})
 
 			setTimeout(function(){
-				console.log("assessing whether to remove hidden")
+				console.log("Assessing whether to show confirmation message.")
 				if(success == true){
 					console.log("trying to remove hidden")
 					confirmMsg.classList.remove('hidden')

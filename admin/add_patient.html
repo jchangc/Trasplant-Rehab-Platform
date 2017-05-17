@@ -16,10 +16,10 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-
     <link href="../css/dashboard.css" rel="stylesheet">
     <link href="../css/switch.css" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
 
   </head>
 
@@ -85,26 +85,26 @@
         <hr>
 
         <div class = "container">
-              <form>
+              <div>
                 <input type = "password" id ="password" placeholder="Enter password" cols="80" rows="1"><br>
                 <input type = "password" id ="password_check" placeholder="Enter password again" cols="80" rows="1"><br>
-              </form> 
+              </div> 
         </div>
 
         <hr>   
         <div class="container">
-          <div class="checkbox">
+          <select class="col-sm-4 selectpicker" id="selectplan">
+              <option value="" selected disabled hidden>Select plan type</option>
+          </select>
+          <div class="col-sm-2 checkbox">
             <label><input type="checkbox" id="admincheck" value="">Admin Account</label>
           </div>
         </div>
 
         <div class = "container">
-          <select class="col-sm-4 selectpicker" id="selectplan">
-              <option value="" selected disabled hidden>Select plan type</option>
-          </select>  
-
-          <div class = "col-sm-1 form-group">
+          <div class = "form-group">
               <button id = "savebutton" type="button" class="btn btn-primary"> Add User </button>
+              <a class = "hidden" id = 'confirm'> Your new user has successfully been created. </a>
           </div>
         </div>
 
@@ -112,6 +112,8 @@
       </div>
   </div>
 
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
  
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -123,10 +125,6 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
     <script src="../scripts/toggle.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
-    <script src="../scripts/firebase_init.js"</script>
-    <script src="../dist/js/jquery.min.js"></script>
-    <script src="../dist/js/bootstrap.min.js"></script>
     <script src="../scripts/add_patient.js"></script>
   </body>
 </html>
